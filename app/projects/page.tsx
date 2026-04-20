@@ -4,7 +4,6 @@ import type { Project } from "../../lib/projects";
 import Image from "next/image";
 import { Github, Globe, TwitterIcon } from "lucide-react";
 import { Geist_Mono } from "next/font/google";
-import { Tabs, TabsList, TabsTab } from "@/components/ui/tabs";
 
 const mono = Geist_Mono({
   subsets: ["latin"],
@@ -19,15 +18,14 @@ function ProjectCard({ img, name, brief, tech, web, git, info }: Project) {
         src={img}
         alt={name}
         draggable={false}
-        className="w-fit object-cover aspect-video max-h-32 select-none border-4 border-double border-(--border) rounded-2xl"
+        className="object-cover aspect-video w-62 select-none border-4 border-double border-(--border) rounded-2xl"
       />
       <div className="flex flex-col w-full px-3 py-2 justify-between">
         <div className="flex flex-col">
           <a
             href={git}
             className="text-lg font-semibold text-[var(--text)] capitalize first-letter:text-lg hover:underline"
-            target="_blank"
-          >
+            target="_blank">
             {name}
           </a>
           <p className="text-sm text-[var(--text-muted)] first-letter:capitalize w-full wrap-anywhere">
@@ -37,8 +35,7 @@ function ProjectCard({ img, name, brief, tech, web, git, info }: Project) {
             {tech.map((t) => (
               <span
                 key={t}
-                className="transition text-xs text-(--text-muted) pr-1"
-              >
+                className="transition text-xs text-(--text-muted) pr-1">
                 #{t}
               </span>
             ))}

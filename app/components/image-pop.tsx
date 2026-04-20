@@ -11,11 +11,9 @@ export default function ImagePop() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Image
+        <img
           alt="my pfp"
-          className="ring-4 ring-(--text-muted)/20 rounded-xl cursor-pointer select-none active:translate-y-0.5"
-          width={90}
-          height={90}
+          className="ring-4 ring-(--text-muted)/20 rounded-xl cursor-pointer select-none active:translate-y-0.5 w-24"
           src="/pfp.png"
           draggable={false}
         />
@@ -24,13 +22,10 @@ export default function ImagePop() {
         <DialogHeader>
           <DialogTitle>My face</DialogTitle>
         </DialogHeader>
-        <Image
+        <img
           alt="my pfp"
-          className="rounded-xl select-none"
-          width={500}
-          height={500}
+          className="rounded-xl select-none w-full"
           src="/pfp.png"
-          quality={100}
           draggable={false}
         />
       </DialogContent>
