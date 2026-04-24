@@ -22,7 +22,7 @@ export default function IconLink({
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="opacity-80 hover:opacity-100 hover:rotate-6 text-neutral-600 dark:text-neutral-400">
+          className="opacity-80 hover:opacity-100 hover:rotate-6 text-neutral-600 dark:text-neutral-400 overflow-y-visible">
           {children}
         </a>
       </TooltipTrigger>

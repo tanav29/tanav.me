@@ -14,10 +14,14 @@ import GithubCalendarClient from "./components/github-calendar";
 import Image from "next/image";
 import { CPlusPlus, Go, Python, TypeScript } from "developer-icons";
 import ViewerNumber from "./components/viewer";
-import { SiLeetcode, SiRust } from "react-icons/si";
+import { SiKaggle, SiLeetcode, SiRust } from "react-icons/si";
 import Link from "next/link";
 import IconLink from "./components/icon-link";
-import { IconBrandLinkedin, IconBrandX } from "@tabler/icons-react";
+import {
+  IconBrandLinkedin,
+  IconBrandX,
+  IconLetterK,
+} from "@tabler/icons-react";
 import Border from "./components/border";
 import { TechMarquee } from "./components/techmarquee";
 import HomeText from "./components/home-text";
@@ -97,6 +101,9 @@ export default function Page() {
           </IconLink>
           <IconLink link="https://leetcode.com/tanavcodes" tooltip="Leetcode">
             <SiLeetcode className="w-5 h-5" />
+          </IconLink>
+          <IconLink link="https://leetcode.com/tanavcodes" tooltip="Kaggle">
+            <IconLetterK className="w-5 h-5" />
           </IconLink>
           <IconLink link="mailto:hey@tanav.me" tooltip="Email">
             <MailIcon className="w-5 h-5" />

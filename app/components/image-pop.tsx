@@ -19,12 +19,9 @@ export default function ImagePop() {
         />
       </DialogTrigger>
       <DialogContent className="sm:max-w-sm">
-        <DialogHeader>
-          <DialogTitle>My face</DialogTitle>
-        </DialogHeader>
         <img
           alt="my pfp"
-          className="rounded-xl select-none w-full"
+          className="rounded-md select-none w-full"
           src="/pfp.png"
           draggable={false}
         />
