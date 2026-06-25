@@ -1,5 +1,4 @@
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { cn } from "cnfast";
 import { Instrument_Serif } from "next/font/google";
 
 const serif = Instrument_Serif({

@@ -1,8 +1,8 @@
 import { ChartNoAxesColumn } from "lucide-react";
-import axios from "axios";
 
 export default async function ViewsLast24() {
-  const { data } = await axios("https://tanav.me/api/view-count");
+  const response = await fetch("https://tanav.me/api/view-count");
+  const data = await response.json();
 
   return (
     <div className="flex gap-1 items-center justify-center text-(--text-muted)">

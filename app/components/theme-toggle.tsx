@@ -3,7 +3,6 @@
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { useWebHaptics } from "web-haptics/react";
 import {
   Tooltip,
   TooltipContent,
@@ -11,22 +10,18 @@ import {
 } from "@/components/ui/tooltip";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
-import { motion, AnimatePresence } from "motion/react";
 
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const { trigger, cancel } = useWebHaptics();
 
   useEffect(() => {
     setMounted(true);
-    cancel();
   }, []);
 
   const current = resolvedTheme || theme || "light";
 
   const toggleTheme = () => {
-    trigger([{ duration: 35 }], { intensity: 1 });
     setTheme(current === "light" ? "dark" : "light");
   };
 
@@ -42,37 +37,28 @@ export function ThemeToggle() {
           onClick={toggleTheme}
           aria-label={`Switch to ${current === "light" ? "dark" : "light"} theme`}
           aria-pressed={current === "dark"}
-          className="relative inline-flex h-7 w-7 items-center justify-center text-(--text) cursor-pointer outline-none overflow-hidden"
+          className="group relative inline-flex h-7 w-7 items-center justify-center text-(--text) cursor-pointer outline-none duration-300"
         >
-          <AnimatePresence mode="wait" initial={false}>
-            {mounted && current === "light" ? (
-              <motion.div
-                key="moon"
-                initial={{ opacity: 0, rotate: 30 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: -30 }}
-                transition={{
-                  opacity: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
-                  rotate: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
-                }}
-              >
-                <MoonIcon className="w-4 h-4" aria-hidden="true" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="sun"
-                initial={{ opacity: 0, rotate: 30 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: -30 }}
-                transition={{
-                  opacity: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
-                  rotate: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
-                }}
-              >
-                <SunIcon className="w-4 h-4" aria-hidden="true" />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {mounted && (
+            <div className="relative w-4 h-4">
+              <MoonIcon
+                className={`absolute inset-0 w-full h-full transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                  current === "light"
+                    ? "opacity-100 scale-100 rotate-0"
+                    : "opacity-0 scale-50 rotate-90"
+                }`}
+                aria-hidden="true"
+              />
+              <SunIcon
+                className={`absolute inset-0 w-full h-full transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                  current === "dark"
+                    ? "opacity-100 scale-100 rotate-0"
+                    : "opacity-0 scale-50 -rotate-90"
+                }`}
+                aria-hidden="true"
+              />
+            </div>
+          )}
         </button>
       </TooltipTrigger>
       <TooltipContent>

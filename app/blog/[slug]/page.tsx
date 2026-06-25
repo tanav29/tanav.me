@@ -5,7 +5,7 @@ import getBlogMetadata from "lib/posts";
 import CodeBlock from "app/components/codeblock";
 import ImgBlock from "app/components/imgblock";
 import { Instrument_Serif } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { cn } from "cnfast";
 
 const headline = Instrument_Serif({
   weight: "400",
