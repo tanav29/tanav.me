@@ -1,7 +1,7 @@
-import getPostMetadata from "../lib/posts";
+import getBlogMetadata from "../lib/posts";
 
 export async function getPosts() {
-  const posts = getPostMetadata("posts");
+  const posts = getBlogMetadata("posts");
   return posts.map((post) => ({
     id: post.slug,
     title: post.title,

@@ -1,9 +1,17 @@
 import Markdown from "markdown-to-jsx";
 import fs from "fs";
 import matter from "gray-matter";
-import getPostMetadata from "lib/posts";
+import getBlogMetadata from "lib/posts";
 import CodeBlock from "app/components/codeblock";
 import ImgBlock from "app/components/imgblock";
+import { Instrument_Serif } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const headline = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  style: "italic",
+});
 
 function getReadingTime(content: string): string {
   const wordsPerMinute = 200;
@@ -20,7 +28,7 @@ const formatDate = (value: string) =>
   });
 
 function getPostContent(slug) {
-  const folder = "posts/";
+  const folder = "blogs/";
   const file = folder + `${slug}.md`;
   const content = fs.readFileSync(file, "utf8");
 
@@ -29,8 +37,8 @@ function getPostContent(slug) {
 }
 
 export const generateStaticParams = async () => {
-  const posts = getPostMetadata("posts");
-  return posts.map((post) => ({ slug: post.slug }));
+  const blogs = getBlogMetadata("blogs");
+  return blogs.map((post) => ({ slug: post.slug }));
 };
 
 export async function generateMetadata(props) {
@@ -80,7 +88,12 @@ export default async function Page(props) {
   return (
     <section className="flex flex-col">
       <header className="flex flex-col gap-3 my-3">
-        <h1 className="text-4xl font-bold text-[var(--text)]">
+        <h1
+          className={cn(
+            "text-4xl font-bold text-[var(--text)]",
+            headline.className,
+          )}
+        >
           {post.data.title}
         </h1>
         <div className="flex items-center gap-3 text-sm text-[var(--text-muted)]">
@@ -101,7 +114,8 @@ export default async function Page(props) {
                 component: ImgBlock,
               },
             },
-          }}>
+          }}
+        >
           {post.content}
         </Markdown>
       </article>

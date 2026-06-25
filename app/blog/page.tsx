@@ -1,4 +1,4 @@
-import getPostMetadata from "lib/posts";
+import getBlogMetadata from "lib/posts";
 import { ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import { Instrument_Serif } from "next/font/google";
@@ -19,7 +19,7 @@ const formatDate = (date: Date) =>
   });
 
 export default async function Page() {
-  const posts = getPostMetadata("posts");
+  const posts = getBlogMetadata("blogs");
 
   return (
     <section className="flex flex-col gap-8">
@@ -31,19 +31,14 @@ export default async function Page() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group flex flex-col gap-2"
+            className="group flex items-baseline justify-center"
           >
-            <div className="flex items-baseline justify-between">
-              <div className="flex gap-6 items-center">
-                <h3 className="font-medium text-[var(--text)] group-hover:opacity-70 transition-opacity">
-                  {post.title}
-                </h3>
-                <ArrowRight className="h-4 w-4 text-[var(--text-muted)] opacity-0 -translate-x-3 group-hover:translate-x-0 group-hover:opacity-70  transition ease-in" />
-              </div>
-              <span className="text-xs text-[var(--text-muted)] tabular-nums">
-                {formatDate(post.date)}
-              </span>
-            </div>
+            <span className="text-xs text-[var(--text-muted)] tabular-nums w-28">
+              {formatDate(post.date)}
+            </span>
+            <h3 className="font-medium text-[var(--text)] group-hover:opacity-70 transition-opacity w-full">
+              {post.title}
+            </h3>
           </Link>
         ))}
       </div>

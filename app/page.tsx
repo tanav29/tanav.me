@@ -1,6 +1,6 @@
 import { projects } from "../lib/projects";
 import { oss } from "../lib/oss";
-import getPostMetadata from "../lib/posts";
+import getBlogMetadata from "../lib/posts";
 import { experience } from "../lib/experience";
 import {
   ChevronRightIcon,
@@ -14,7 +14,7 @@ import GithubCalendarClient from "./components/github-calendar";
 import Image from "next/image";
 import { CPlusPlus, Go, Python, TypeScript } from "developer-icons";
 import ViewerNumber from "./components/viewer";
-import { SiKaggle, SiLeetcode, SiRust } from "react-icons/si";
+import { SiLeetcode, SiRust } from "react-icons/si";
 import Link from "next/link";
 import IconLink from "./components/icon-link";
 import {
@@ -30,8 +30,8 @@ import Email from "@/components/email";
 import { Suspense } from "react";
 
 export default function Page() {
-  const recentProjects = projects.slice(0, 3);
-  const recentPosts = getPostMetadata("posts").slice(0, 3);
+  // const recentProjects = projects.slice(0, 3);
+  const recentPosts = getBlogMetadata("blogs").slice(0, 3);
 
   return (
     <section className="flex flex-col gap-6">
