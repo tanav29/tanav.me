@@ -21,7 +21,7 @@ const ImgBlock = ({ src, alt, className }: any) => {
   }, [isModalOpen]);
 
   return (
-    <>
+    <div>
       <div className="w-full">
         <div className="relative w-full flex items-center justify-center">
           <img
@@ -51,7 +51,7 @@ const ImgBlock = ({ src, alt, className }: any) => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
