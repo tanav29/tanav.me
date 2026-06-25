@@ -2,7 +2,7 @@
 
 import { CircleCheck, MailIcon } from "lucide-react";
 import { useState } from "react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function Email() {
   const [click, setClick] = useState(false);

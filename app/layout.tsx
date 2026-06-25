@@ -5,7 +5,7 @@ import { DM_Sans, Geist } from "next/font/google";
 import { PostHogProvider } from "./components/PostHogProvider";
 import { ThemeProvider } from "./components/theme-provider";
 import { ThemeToggle } from "./components/theme-toggle";
-import { FeedbackButton } from "@/components/feedback";
+import { FeedbackButton } from "./components/feedback";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Border from "./components/border";
 import { cn } from "@/lib/utils";

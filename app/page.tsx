@@ -23,7 +23,7 @@ import Border from "./components/border";
 import { TechMarquee } from "./components/techmarquee";
 import HomeText from "./components/home-text";
 import ImagePop from "./components/image-pop";
-import Email from "@/components/email";
+import Email from "./components/email";
 import { Suspense } from "react";
 
 export default function Page() {
