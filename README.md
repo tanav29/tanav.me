@@ -10,7 +10,7 @@
 This application requires Node.js v18.17+.
 
 ```bash
-git clone https://github.com/thetanav/tanav.me.git
+git clone https://github.com/tanav29/tanav.me.git
 cd tanav.me
 bun install
 bun dev

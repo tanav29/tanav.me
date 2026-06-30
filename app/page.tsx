@@ -98,7 +98,7 @@ export default function Page() {
             Resume
           </a>
           <a
-            href="https://cal.com/tanavcodes"
+            href="https://cal.com/tanav29"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 ring-1 ring-border active:translate-y-0.5 transition-transform rounded-xl flex gap-3 items-center justify-center cursor-pointer bg-linear-to-b from-(--text) to-muted-foreground text-(--bg) group font-semibold"
@@ -112,19 +112,16 @@ export default function Page() {
         </div>
 
         <div className="flex flex-wrap gap-4 text-sm text-[var(--text)] items-center mt-2">
-          <IconLink link="https://x.com/tanavtwt" tooltip="X">
+          <IconLink link="https://x.com/tanav29" tooltip="X">
             <IconBrandX className="w-5 h-5" aria-hidden="true" />
           </IconLink>
-          <IconLink link="https://github.com/thetanav" tooltip="Github">
+          <IconLink link="https://github.com/tanav29" tooltip="Github">
             <IconBrandGithub className="w-5 h-5" aria-hidden="true" />
           </IconLink>
-          <IconLink
-            link="https://linkedin.com/in/tanav-poswal"
-            tooltip="Linkedin"
-          >
+          <IconLink link="https://linkedin.com/in/tanav29" tooltip="Linkedin">
             <IconBrandLinkedin className="w-5 h-5" aria-hidden="true" />
           </IconLink>
-          <IconLink link="https://leetcode.com/tanavcodes" tooltip="Leetcode">
+          <IconLink link="https://leetcode.com/tanav29" tooltip="Leetcode">
             <SiLeetcode className="w-5 h-5" aria-hidden="true" />
           </IconLink>
           <Email />
