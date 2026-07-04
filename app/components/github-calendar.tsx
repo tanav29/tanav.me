@@ -9,7 +9,7 @@ const GitHubCalendar = dynamic(() => import("react-github-calendar"), {
 });
 
 export default function GithubCalendarClient({
-  username = "thetanav",
+  username = "tanav29",
   blockSize = 1,
 }: {
   username?: string;

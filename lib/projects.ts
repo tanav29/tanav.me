@@ -3,6 +3,7 @@ export interface Project {
   name: string;
   brief: string;
   git?: string;
+  video?: string;
   web?: string;
   info?: string;
   tech: string[];
@@ -10,9 +11,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    img: "/images/drawble.png",
+    git: "https://github.com/tanav29/drawble",
+    video: "ANSXcxYZffs",
+    name: "Drawble",
+    brief: "",
+    tech: ["ScoketIO", "Vite", "Zustand", "Tanstack", "Hono"],
+  },
+  {
     img: "/images/vidora.png",
     git: "https://github.com/tanav29/uber",
-    info: "https://x.com/tanav29/status/2007356766284329173?s=20",
+    info: "https://x.com/tanavtwt/status/2007356766284329173?s=20",
     name: "Vidora - complete video streaming",
     brief:
       "a complete Mux-like video transcoding and streaming platform with a web interface.",
@@ -28,7 +37,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/scoutly.png",
-    info: "https://x.com/tanav29/status/1994856020099920261?s=20",
+    info: "https://x.com/tanavtwt/status/1994856020099920261?s=20",
     git: "https://github.com/tanav29/road-vision/",
     name: "scoutly - a research RAG",
     brief: "a dead simple perplexity clone with docling and web scraping.",
@@ -37,7 +46,7 @@ export const projects: Project[] = [
   {
     img: "/images/crawler.png",
     git: "https://github.com/tanav29/road-vision/",
-    info: "https://x.com/tanav29/status/2001326270731444275?s=20",
+    info: "https://x.com/tanavtwt/status/2001326270731444275?s=20",
     name: "crawler - search engine",
     brief:
       "a tiny search engine that scrapes all pages in a domain and maps them to titles for search",
@@ -53,7 +62,7 @@ export const projects: Project[] = [
   {
     img: "/images/trading.png",
     git: "https://github.com/tanav29/trading-system",
-    info: "https://x.com/tanav29/status/2008236317537431580",
+    info: "https://x.com/tanavtwt/status/2008236317537431580",
     name: "trade exchange",
     brief: "real-time trading app with live order book.",
     tech: ["Express", "NextJs", "Redis", "ChartJs", "WebSocket"],

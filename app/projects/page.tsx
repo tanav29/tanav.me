@@ -2,15 +2,30 @@ import type { Metadata } from "next";
 import { projects } from "../../lib/projects";
 import type { Project } from "../../lib/projects";
 import Image from "next/image";
-import { Globe } from "lucide-react";
+import { Globe, Youtube } from "lucide-react";
 import { Geist_Mono } from "next/font/google";
 import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const mono = Geist_Mono({
   subsets: ["latin"],
 });
 
-function ProjectCard({ img, name, brief, tech, web, git, info }: Project) {
+export function ProjectCard({
+  img,
+  name,
+  brief,
+  tech,
+  web,
+  git,
+  info,
+  video,
+}: Project) {
   const primaryUrl = git ?? web ?? info;
 
   return (
@@ -21,9 +36,9 @@ function ProjectCard({ img, name, brief, tech, web, git, info }: Project) {
         src={img}
         alt={name}
         draggable={false}
-        className="object-cover aspect-video w-56 h-fit select-none sm:border-4 sm:border-double border border-(--border) rounded-xl"
+        className="object-cover aspect-video w-56 h-fit select-none border border-(--border) rounded-xl"
       />
-      <div className="flex flex-col w-full sm:px-3 pt-3 py-2 justify-between">
+      <div className="flex flex-col w-full sm:px-3 pt-3 justify-between">
         <div className="flex flex-col -mt-2">
           {primaryUrl ? (
             <a
@@ -53,7 +68,46 @@ function ProjectCard({ img, name, brief, tech, web, git, info }: Project) {
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center gap-2">
+          {video && (
+            <Dialog>
+              <DialogTrigger
+                render={
+                  <button className="outline-none cursor-pointer">
+                    <Youtube
+                      aria-hidden="true"
+                      className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors"
+                    />
+                  </button>
+                }
+              />
+              <DialogContent className="sm:max-w-xl">
+                <DialogTitle>{name}</DialogTitle>
+                <div
+                  style={{
+                    overflow: "hidden",
+                    paddingBottom: "56.25%",
+                    position: "relative",
+                    height: 0,
+                  }}
+                >
+                  <iframe
+                    style={{
+                      left: 0,
+                      top: 0,
+                      height: "100%",
+                      width: "100%",
+                      position: "absolute",
+                    }}
+                    src={`https://www.youtube.com/embed/${video}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="Embedded YouTube Video"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
+          )}
           {web && (
             <a
               href={web}
@@ -112,7 +166,7 @@ export default function ProjectsPage() {
           Completed Projects
         </h1>
       </div>
-      <div className="flex flex-col space-y-2">
+      <div className="flex flex-col space-y-4">
         {projects.map((project) => (
           <ProjectCard key={project.name} {...project} />
         ))}

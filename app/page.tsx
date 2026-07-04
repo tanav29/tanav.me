@@ -25,9 +25,11 @@ import HomeText from "./components/home-text";
 import ImagePop from "./components/image-pop";
 import Email from "./components/email";
 import { Suspense } from "react";
+import { projects } from "@/lib/projects";
+import { ProjectCard } from "./projects/page";
 
 export default function Page() {
-  // const recentProjects = projects.slice(0, 3);
+  const recentProjects = projects.slice(0, 2);
   const recentPosts = getBlogMetadata("blogs").slice(0, 3);
 
   return (
@@ -112,7 +114,7 @@ export default function Page() {
         </div>
 
         <div className="flex flex-wrap gap-4 text-sm text-[var(--text)] items-center mt-2">
-          <IconLink link="https://x.com/tanav29" tooltip="X">
+          <IconLink link="https://x.com/tanavtwt" tooltip="X">
             <IconBrandX className="w-5 h-5" aria-hidden="true" />
           </IconLink>
           <IconLink link="https://github.com/tanav29" tooltip="Github">
@@ -137,8 +139,30 @@ export default function Page() {
       <Border />
 
       <Suspense>
-        <GithubCalendarClient username="thetanav" blockSize={7} />
+        <GithubCalendarClient username="tanav29" blockSize={7} />
       </Suspense>
+
+      <Border />
+
+      <h2 className="text-lg font-semibold text-(--text) px-4 sm:px-6 -my-3">
+        Projects
+      </h2>
+
+      <Border />
+
+      <section className="flex flex-col px-4 sm:px-6">
+        <div className="flex flex-col gap-6">
+          {recentProjects.map((project) => (
+            <ProjectCard key={project.name} {...project} />
+          ))}
+        </div>
+        <Link
+          href="/projects"
+          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6"
+        >
+          View all projects →
+        </Link>
+      </section>
 
       <Border />
 
