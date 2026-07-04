@@ -15,7 +15,8 @@ export const projects: Project[] = [
     git: "https://github.com/tanav29/drawble",
     video: "ANSXcxYZffs",
     name: "Drawble",
-    brief: "",
+    brief:
+      "A modern take on Skribbl.io that combines multiplayer drawing, live guessing, room-based gameplay, and synchronized YouTube Music to make game nights more interactive.",
     tech: ["ScoketIO", "Vite", "Zustand", "Tanstack", "Hono"],
   },
   {
