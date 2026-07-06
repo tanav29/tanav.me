@@ -103,6 +103,10 @@
     --color-background: var(--bg);
 }
 
+.font-mono {
+    font-family: var(--font-geist-mono), monospace;
+}
+
 html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;

@@ -31,14 +31,14 @@ export function ProjectCard({
   return (
     <div className="group flex sm:flex-row flex-col">
       <Image
-        width={500}
-        height={500}
+        width={200}
+        height={200}
         src={img}
         alt={name}
         draggable={false}
-        className="object-cover aspect-video w-56 h-fit select-none border border-(--border) rounded-xl"
+        className="object-cover aspect-video w-48 h-fit select-none border border-(--border) rounded-xl"
       />
-      <div className="flex flex-col w-full sm:px-3 pt-3 justify-between">
+      <div className="flex flex-col w-full sm:px-3 pt-1 justify-between">
         <div className="flex flex-col -mt-2">
           {primaryUrl ? (
             <a

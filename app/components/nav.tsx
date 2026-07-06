@@ -102,7 +102,7 @@ export default function Shimmer({
         {/* Shimmering overlay */}
         <div
           aria-hidden="true"
-          className="absolute bg-clip-text text-transparent bg-gradient-to-r from-transparent via-(--text) to-transparent z-10 top-0 left-0 right-0 [background-size:50%_100%] [background-repeat:no-repeat]"
+          className="absolute bg-clip-text text-transparent bg-gradient-to-r from-transparent via-(--text)- via-green-400 to-transparent z-10 top-0 left-0 right-0 [background-size:50%_100%] [background-repeat:no-repeat]"
           style={{
             animation: "wave 2s linear infinite",
           }}
