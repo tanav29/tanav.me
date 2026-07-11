@@ -1,7 +1,20 @@
+import {
+  IconPencil,
+  IconVideo,
+  IconRocket,
+  IconSearch,
+  IconWorldSearch,
+  IconCar,
+  IconChessKnight,
+  IconChartLine,
+  IconBrandLinkedin,
+} from "@tabler/icons-react";
+
 export interface Project {
   img: string;
   name: string;
   brief: string;
+  icon: any;
   git?: string;
   video?: string;
   web?: string;
@@ -12,6 +25,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     img: "/images/drawble.png",
+    icon: IconPencil,
     git: "https://github.com/tanav29/drawble",
     video: "ANSXcxYZffs",
     name: "Drawble",
@@ -22,6 +36,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/vidora.png",
+    icon: IconVideo,
     git: "https://github.com/tanav29/vidora",
     info: "https://x.com/tanavtwt/status/2007356766284329173?s=20",
     name: "Vidora",
@@ -32,6 +47,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/ship.png",
+    icon: IconRocket,
     git: "https://github.com/tanav29/ship",
     name: "Ship",
     web: "https://ship.tanav.me",
@@ -41,6 +57,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/scoutly.png",
+    icon: IconSearch,
     info: "https://x.com/tanavtwt/status/1994856020099920261?s=20",
     git: "https://github.com/tanav29/scoutly/",
     name: "scoutly",
@@ -49,6 +66,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/crawler.png",
+    icon: IconWorldSearch,
     git: "https://github.com/tanav29/crawler/",
     info: "https://x.com/tanavtwt/status/2001326270731444275?s=20",
     name: "crawler",
@@ -58,6 +76,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/uber.png",
+    icon: IconCar,
     git: "https://github.com/tanav29/uber",
     name: "Ober",
     brief:
@@ -66,6 +85,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/chess-app.png",
+    icon: IconChessKnight,
     git: "https://github.com/tanav29/chess",
     name: "chess",
     brief: "multiplayer chess game with websockets.",
@@ -73,6 +93,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/trading.png",
+    icon: IconChartLine,
     git: "https://github.com/tanav29/trade",
     info: "https://x.com/tanavtwt/status/2008236317537431580",
     name: "exchange",
@@ -81,6 +102,7 @@ export const projects: Project[] = [
   },
   {
     img: "/images/linkmash.png",
+    icon: IconBrandLinkedin,
     web: "https://linkmash.netlify.app/",
     name: "linkmash",
     brief: "compare your linkedin profile with others.",
