@@ -79,11 +79,7 @@ export default function Page() {
         </div>
 
         <p className="text-[var(--text-muted)] leading-relaxed max-w-prose">
-          Full-stack web developer with a strong interest in GenAI. I design
-          minimal interfaces, robust APIs, and scalable architectures built to
-          last. I prefer intelligent systems over monolithic solutions.
-          Constantly learning, execution-driven, and motivated to create
-          real-world impact while helping others grow.
+          Tanav is a software engineer passionate about building intelligent, scalable, and reliable systems. His work spans full stack development, AI powered applications, and distributed systems, with a strong focus on system design, backend engineering, and clean architecture. He enjoys solving complex problems by understanding first principles, carefully evaluating tradeoffs, and designing software that remains maintainable as it grows. Curious by nature and driven by execution, he is constantly learning, refining his craft, and building products that create meaningful real world impact while contributing to the developer community through open source and knowledge sharing.
         </p>
 
         <div className="flex gap-2 text-sm p-1/2">
