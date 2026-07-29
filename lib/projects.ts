@@ -9,6 +9,7 @@ import {
   IconChartLine,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
+import { NotebookTextIcon } from "lucide-react";
 
 export interface Project {
   img: string;
@@ -33,6 +34,16 @@ export const projects: Project[] = [
     brief:
       "Skribbl.io with synchronized YouTube Music to make game rooms more interactive.",
     tech: ["ScoketIO", "Vite", "Zustand", "Tanstack", "Hono"],
+  },
+  {
+    img: "/images/logbip.png",
+    icon: NotebookTextIcon,
+    git: "https://github.com/tanav29/logbip",
+    name: "Log Build in Public",
+    web: "https://logbip.vercel.app/",
+    brief:
+      "A social platform where builder / learner can log there progress publically.",
+    tech: ["Prisma", "Better Auth", "Hono"],
   },
   {
     img: "/images/vidora.png",

@@ -1,3 +1,4 @@
+import { CodeSandboxLogoIcon } from "@radix-ui/react-icons";
 import {
   IconBrandCpp,
   IconBrandDocker,
@@ -9,12 +10,16 @@ import {
   IconBrandTypescript,
   IconLetterE,
 } from "@tabler/icons-react";
+import { Java } from "developer-icons";
 import {
   SiArchlinux,
   SiBun,
+  SiClaude,
   SiCloudflare,
+  SiFastapi,
   SiFlask,
   SiGit,
+  SiGoland,
   SiMongodb,
   SiPostgresql,
   SiRedis,
@@ -70,12 +75,20 @@ export const techlist: Tech[] = [
     logo: <SiTensorflow />,
   },
   {
+    name: "FastAPI",
+    logo: <SiFastapi />,
+  },
+  {
     name: "Postgres",
     logo: <SiPostgresql />,
   },
   {
     name: "Git",
     logo: <SiGit />,
+  },
+  {
+    name: "Go",
+    logo: <SiGoland />
   },
   {
     name: "Bun",

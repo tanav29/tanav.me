@@ -6,6 +6,7 @@ import {
   GitPullRequestArrowIcon,
   FileTextIcon,
   SendIcon,
+  Calendar,
 } from "lucide-react";
 import GithubCalendarClient from "./components/github-calendar";
 import Image from "next/image";
@@ -16,8 +17,13 @@ import Link from "next/link";
 import IconLink from "./components/icon-link";
 import {
   IconBrandGithub,
+  IconBrandGithubFilled,
+  IconBrandLeetcode,
   IconBrandLinkedin,
+  IconBrandLinkedinFilled,
   IconBrandX,
+  IconCalendarWeekFilled,
+  IconFileFilled,
 } from "@tabler/icons-react";
 import Border from "./components/border";
 import { TechMarquee } from "./components/techmarquee";
@@ -34,8 +40,8 @@ export default function Page() {
 
   return (
     <section className="flex flex-col gap-6">
-      <section className="flex flex-col gap-6 px-4 sm:px-6">
-        <div className="rounded-lg border border-(--border) overflow-hidden relative h-auto aspect-18/6">
+      <section className="flex flex-col gap-6 px-4 py-6 sm:px-6">
+        {/*<div className="rounded-lg border border-(--border) overflow-hidden relative h-auto aspect-18/6">
           <Image
             src="/header.jpg"
             alt=""
@@ -53,7 +59,7 @@ export default function Page() {
             quality={75}
             className="absolute top-0 bottom-0 z-10 h-full"
           />
-        </div>
+        </div>*/}
         <div className="flex items-end gap-3 relative">
           <ImagePop />
 
@@ -65,24 +71,14 @@ export default function Page() {
 
           <div className="w-full flex items-center justify-between">
             <HomeText />
-            <div
-              className="gap-2 items-center hidden sm:flex"
-              aria-hidden="true"
-            >
-              <TypeScript className="w-5 h-5" />
-              <Go className="w-7 h-7" />
-              <Python className="w-5 h-5" />
-              <CPlusPlus className="w-5 h-5" />
-              <SiRust className="w-5 h-5" />
-            </div>
           </div>
         </div>
 
         <p className="text-[var(--text-muted)] leading-relaxed max-w-prose">
-          Tanav is a software engineer passionate about building intelligent, scalable, and reliable systems. His work spans full stack development, AI powered applications, and distributed systems, with a strong focus on system design, backend engineering, and clean architecture. He enjoys solving complex problems by understanding first principles, carefully evaluating tradeoffs, and designing software that remains maintainable as it grows. Curious by nature and driven by execution, he is constantly learning, refining his craft, and building products that create meaningful real world impact while contributing to the developer community through open source and knowledge sharing.
+          He is a software engineer passionate about building intelligent, scalable, and reliable systems. His work spans full stack development, AI powered applications, and distributed systems, with a strong focus on system design, backend engineering, and clean architecture. He enjoys solving complex problems by understanding first principles, carefully evaluating tradeoffs, and designing software that remains maintainable as it grows. Curious by nature and driven by execution, he is constantly learning, refining his craft, and building products that create meaningful real world impact while contributing to the developer community through open source and knowledge sharing.
         </p>
 
-        <div className="flex gap-2 text-sm p-1/2">
+        {/*<div className="flex gap-2 text-sm p-1/2">
           <a
             href="https://dub.sh/tanav-resume"
             target="_blank"
@@ -107,22 +103,28 @@ export default function Page() {
             />
             Get in touch
           </a>
-        </div>
+        </div>*/}
 
-        <div className="flex flex-wrap gap-4 text-sm text-[var(--text)] items-center mt-2">
+        <div className="flex flex-wrap gap-2 text-sm text-[var(--text)] items-center mt-2">
           <IconLink link="https://x.com/tanavtwt" tooltip="X">
-            <IconBrandX className="w-5 h-5" aria-hidden="true" />
+            <IconBrandX className="w-6 h-6 stroke-2" aria-hidden="true" />
           </IconLink>
           <IconLink link="https://github.com/tanav29" tooltip="Github">
-            <IconBrandGithub className="w-5 h-5" aria-hidden="true" />
+            <IconBrandGithubFilled className="w-6 h-6" aria-hidden="true" />
           </IconLink>
           <IconLink link="https://linkedin.com/in/tanav29" tooltip="Linkedin">
-            <IconBrandLinkedin className="w-5 h-5" aria-hidden="true" />
+            <IconBrandLinkedinFilled className="w-6 h-6" aria-hidden="true" />
           </IconLink>
           <IconLink link="https://leetcode.com/tanav29" tooltip="Leetcode">
-            <SiLeetcode className="w-5 h-5" aria-hidden="true" />
+            <IconBrandLeetcode className="w-6 h-6 -stroke-3" aria-hidden="true" />
           </IconLink>
           <Email />
+          <IconLink link="https://cal.com/tanav29" tooltip="CalCom">
+            <IconCalendarWeekFilled  className="w-6 h-6 stroke-2" aria-hidden="true" />
+          </IconLink>
+          <IconLink link="https://dub.sh/tanav-resume" tooltip="Resume">
+            <IconFileFilled  className="w-6 h-6" aria-hidden="true" />
+          </IconLink>
         </div>
       </section>
 

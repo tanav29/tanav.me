@@ -2,8 +2,6 @@ import Markdown from "markdown-to-jsx";
 import fs from "fs";
 import matter from "gray-matter";
 import getBlogMetadata from "lib/posts";
-import CodeBlock from "app/components/codeblock";
-import ImgBlock from "app/components/imgblock";
 import { Instrument_Serif } from "next/font/google";
 import { cn } from "cnfast";
 
@@ -90,7 +88,12 @@ export default async function Page(props) {
 
   return (
     <section className="flex flex-col">
-      <header className="flex flex-col gap-3 my-3">
+      <header className="flex flex-col gap-1 mb-7 mt-32 ">
+        <div className="flex items-center gap-3 text-sm text-[var(--text-muted)]">
+          <span>{formatDate(post.data.date)}</span>
+          <span>•</span>
+          <span>{readingTime}</span>
+        </div>
         <h1
           className={cn(
             "text-4xl font-bold text-[var(--text)]",
@@ -99,25 +102,20 @@ export default async function Page(props) {
         >
           {post.data.title}
         </h1>
-        <div className="flex items-center gap-3 text-sm text-[var(--text-muted)]">
-          <span>{formatDate(post.data.date)}</span>
-          <span>•</span>
-          <span>{readingTime}</span>
-        </div>
       </header>
 
-      <article className="prose dark:prose-invert space-y-0">
+      <article className="typeset typeset-docs min-w-[37em]">
         <Markdown
-          options={{
-            overrides: {
-              code: {
-                component: CodeBlock,
-              },
-              img: {
-                component: ImgBlock,
-              },
-            },
-          }}
+          // options={{
+          //   overrides: {
+          //     code: {
+          //       component: CodeBlock,
+          //     },
+          //     img: {
+          //       component: ImgBlock,
+          //     },
+          //   },
+          // }}
         >
           {post.content}
         </Markdown>

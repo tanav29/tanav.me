@@ -1,10 +1,11 @@
 @import "tailwindcss";
-@plugin '@tailwindcss/typography';
+@import "./typeset.css";
+/*@plugin '@tailwindcss/typography';*/
 @plugin 'tailwindcss-animate';
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+/*@import "shadcn/tailwind.css";*/
 /*@import "streamdown/styles.css";*/
-@source "../node_modules/streamdown/dist/*.js";
+/*@source "../node_modules/streamdown/dist/*.js";*/
 
 @custom-variant dark (&:is(.dark *));
 
@@ -98,10 +99,10 @@
     --sidebar-ring: oklch(0.556 0 0);
 }
 
-@theme {
+/*@theme {
     --color-text: var(--text);
     --color-background: var(--bg);
-}
+}*/
 
 .font-mono {
     font-family: var(--font-geist-mono), monospace;
@@ -113,106 +114,12 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+/*body {
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-geist-sans), system-ui, sans-serif;
     line-height: 1.6;
-}
-
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-    letter-spacing: -0.02em;
-    font-weight: 500;
-}
-
-.prose a {
-    text-decoration: none;
-    color: inherit;
-    transition: opacity 0.2s ease;
-}
-
-/* Minimal Prose */
-article.prose {
-    color: var(--text);
-    max-width: 100%;
-}
-
-article.prose h1,
-article.prose h2,
-article.prose h3,
-article.prose h4 {
-    color: var(--text);
-    font-weight: 500;
-    margin-top: 2em;
-    margin-bottom: 1em;
-}
-
-article.prose p {
-    margin-bottom: 1.5em;
-    color: var(--text-muted);
-}
-
-article.prose a {
-    color: var(--text);
-    text-decoration: underline;
-    text-decoration-color: var(--border);
-    text-underline-offset: 4px;
-}
-
-article.prose a:hover {
-    text-decoration-color: var(--text);
-}
-
-article.prose ul,
-article.prose ol {
-    margin-bottom: 1.5em;
-    padding-left: 1.5em;
-    color: var(--text-muted);
-}
-
-article.prose li {
-    margin-bottom: 0.5em;
-}
-
-article.prose code {
-    background: var(--accent-soft);
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-    font-size: 0.9em;
-    font-family: monospace;
-}
-
-article.prose pre {
-    background: var(--accent-soft);
-    padding: 1em;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin-bottom: 1.5em;
-}
-
-article.prose pre code {
-    background: transparent;
-    padding: 0;
-    color: var(--text);
-}
-
-article.prose blockquote {
-    border-left: 2px solid var(--border);
-    padding-left: 1em;
-    font-style: italic;
-    color: var(--text-muted);
-    margin-bottom: 1.5em;
-}
-
-article.prose img {
-    border-radius: 8px;
-    margin-bottom: 1.5em;
-}
+}*/
 
 @theme inline {
     --animate-marquee: marquee var(--duration) infinite linear;
@@ -294,6 +201,7 @@ article.prose img {
 
 @layer base {
     * {
+        scrollbar-width: none;
         @apply border-border outline-ring/50;
     }
     body {
@@ -302,4 +210,13 @@ article.prose img {
     html {
         @apply font-sans;
     }
+}
+
+.typeset-docs {
+  --typeset-font-body: var(--font-geist);
+  --typeset-font-heading: var(--font-geist);
+  --typeset-font-mono: var(--font-geist-mono);
+  --typeset-size: 15px;
+  --typeset-leading: 1.75;
+  --typeset-flow: 1.25em;
 }
