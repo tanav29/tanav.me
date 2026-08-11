@@ -104,7 +104,7 @@ export default async function Page(props) {
         </h1>
       </header>
 
-      <article className="typeset typeset-docs min-w-[37em]">
+      <article className="typeset typeset-docs">
         <Markdown
           // options={{
           //   overrides: {
