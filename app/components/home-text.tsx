@@ -8,13 +8,12 @@ const serif = Instrument_Serif({
 
 export default function HomeText() {
   return (
-    <div className="flex justify-center items-end ml-2 -mb-1">
+    <div className="flex justify-center items-end ml-0 -mb-1">
       <p
         className={cn(
           "text-4xl font-semibold text-(--text-muted) tracking-tight",
           serif.className,
-        )}
-      >
+        )}>
         Hi! I am
       </p>
       <div className="w-1.5" />

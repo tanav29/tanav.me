@@ -61,7 +61,7 @@ export default function Page() {
           />
         </div>*/}
         <div className="flex items-end gap-3 relative">
-          <ImagePop />
+          {/* <ImagePop /> */}
 
           <div className="absolute top-0 right-0">
             <Suspense>
@@ -75,7 +75,13 @@ export default function Page() {
         </div>
 
         <p className="text-[var(--text-muted)] leading-relaxed max-w-prose">
-          He is a software engineer passionate about building intelligent, scalable, and reliable systems. His work spans full stack development, AI powered applications, and distributed systems, with a strong focus on system design, backend engineering, and clean architecture. He enjoys solving complex problems by understanding first principles, carefully evaluating tradeoffs, and designing software that remains maintainable as it grows. Curious by nature and driven by execution, he is constantly learning, refining his craft, and building products that create meaningful real world impact while contributing to the developer community through open source and knowledge sharing.
+          He is a software engineer passionate about building intelligent,
+          scalable, and reliable systems. His work spans full stack development,
+          AI powered applications, and distributed systems, with a strong focus
+          on system design, backend engineering, and clean architecture. He
+          enjoys solving complex problems by understanding first principles,
+          carefully evaluating tradeoffs, and designing software that remains
+          maintainable as it grows.
         </p>
 
         {/*<div className="flex gap-2 text-sm p-1/2">
@@ -116,14 +122,20 @@ export default function Page() {
             <IconBrandLinkedinFilled className="w-6 h-6" aria-hidden="true" />
           </IconLink>
           <IconLink link="https://leetcode.com/tanav29" tooltip="Leetcode">
-            <IconBrandLeetcode className="w-6 h-6 -stroke-3" aria-hidden="true" />
+            <IconBrandLeetcode
+              className="w-6 h-6 -stroke-3"
+              aria-hidden="true"
+            />
           </IconLink>
           <Email />
           <IconLink link="https://cal.com/tanav29" tooltip="CalCom">
-            <IconCalendarWeekFilled  className="w-6 h-6 stroke-2" aria-hidden="true" />
+            <IconCalendarWeekFilled
+              className="w-6 h-6 stroke-2"
+              aria-hidden="true"
+            />
           </IconLink>
           <IconLink link="https://dub.sh/tanav-resume" tooltip="Resume">
-            <IconFileFilled  className="w-6 h-6" aria-hidden="true" />
+            <IconFileFilled className="w-6 h-6" aria-hidden="true" />
           </IconLink>
         </div>
       </section>
@@ -156,8 +168,7 @@ export default function Page() {
         </div>
         <Link
           href="/projects"
-          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6"
-        >
+          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6">
           View all projects →
         </Link>
       </section>
@@ -188,8 +199,7 @@ export default function Page() {
                       href={job.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-bold text-[var(--text)] hover:underline"
-                    >
+                      className="font-bold text-[var(--text)] hover:underline">
                       {job.company}
                     </a>
                     <p className="text-sm text-[var(--text-muted)]">
@@ -211,8 +221,7 @@ export default function Page() {
         </div>
         <Link
           href="/experience"
-          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6"
-        >
+          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6">
           View all experience →
         </Link>
       </section>
@@ -233,8 +242,7 @@ export default function Page() {
               href={contri.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 transition-colors"
-            >
+              className="group flex items-center gap-3 transition-colors">
               <GitPullRequestArrowIcon
                 aria-hidden="true"
                 className="h-4 w-4 text-purple-600"
@@ -265,8 +273,7 @@ export default function Page() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex flex-col gap-2"
-            >
+              className="group flex flex-col gap-2">
               <div className="flex items-baseline justify-between">
                 <h3 className="text-sm text-(--text) group-hover:text-(--text-muted) transition-colors">
                   {post.title}
@@ -296,8 +303,7 @@ export default function Page() {
         </div>
         <Link
           href="/blog"
-          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors"
-        >
+          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors">
           Read more →
         </Link>
       </section>
