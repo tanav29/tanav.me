@@ -60,6 +60,20 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Tanav Poswal",
+  url: "https://tanav.me",
+  description: "Full-stack software engineer building AI-powered applications, scalable backend systems, and distributed software.",
+  jobTitle: "Full Stack Engineer",
+  sameAs: [
+    "https://github.com/tanav29",
+    "https://www.linkedin.com/in/tanav29",
+    "https://x.com/tanavtwt",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -71,6 +85,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn("font-sans", geist.variable)}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       {/*<ViewTransition>*/}
       <body className={`${sans.className} antialiased overflow-y-scroll`}>
         <TooltipProvider>

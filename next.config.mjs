@@ -1,5 +1,13 @@
 const nextConfig = {
   reactStrictMode: true,
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [{ key: "Vary", value: "Accept, Accept-Encoding" }],
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
