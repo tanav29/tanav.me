@@ -6,6 +6,7 @@ import { PostHogProvider } from "./components/PostHogProvider";
 import { ThemeProvider } from "./components/theme-provider";
 import { ThemeToggle } from "./components/theme-toggle";
 import { FeedbackButton } from "./components/feedback";
+import { Subscribe } from "./components/subscribe";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Border from "./components/border";
 import { cn } from "@/lib/utils";
@@ -111,6 +112,7 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Border />
+                <Subscribe />
                 <footer className="mt-4 mx-6 flex items-center justify-between text-sm text-muted-foreground">
                   <div>© {new Date().getFullYear()} Tanav</div>
                   <div>
