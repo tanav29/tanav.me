@@ -1,9 +1,10 @@
-import Markdown from "markdown-to-jsx";
 import fs from "fs";
 import matter from "gray-matter";
 import getBlogMetadata from "lib/posts";
 import { Instrument_Serif } from "next/font/google";
 import { cn } from "cnfast";
+import "katex/dist/katex.min.css";
+import MarkdownRenderer from "./MarkdownRenderer";
 
 const headline = Instrument_Serif({
   weight: "400",
@@ -105,20 +106,7 @@ export default async function Page(props) {
       </header>
 
       <article className="typeset typeset-docs">
-        <Markdown
-          // options={{
-          //   overrides: {
-          //     code: {
-          //       component: CodeBlock,
-          //     },
-          //     img: {
-          //       component: ImgBlock,
-          //     },
-          //   },
-          // }}
-        >
-          {post.content}
-        </Markdown>
+        <MarkdownRenderer>{post.content}</MarkdownRenderer>
       </article>
     </section>
   );
