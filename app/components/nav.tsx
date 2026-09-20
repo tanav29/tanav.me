@@ -53,32 +53,18 @@ export function Navbar() {
     <nav className="flex items-center justify-center gap-4 text-xs sm:text-sm font-medium overflow-hiddens ml-2">
       {Object.entries(navItems).map(([path, { name, icon, short }]) => {
         return (
-          <Tooltip key={path}>
-            <TooltipTrigger
-              render={
-                <Link
-                  href={path}
-                  aria-label={name}
-                  aria-current={pathname === path ? "page" : undefined}
-                  className={`flex items-center group transition-colors text-muted-foreground hover:text-primary gap-1 justify-center duration-300 [&svg]:size-4 ${pathname == path && "text-primary"}`}
-                  prefetch={true}
-                >
-                  <span className="sm:hidden block" aria-hidden="true">
-                    {icon}
-                  </span>
-                  <span className="hidden sm:block">{name}</span>
-                </Link>
-              }
-            />
-            <TooltipContent>
-              <p>
-                {name}{" "}
-                <KbdGroup>
-                  <Kbd>{short.toUpperCase()}</Kbd>
-                </KbdGroup>
-              </p>
-            </TooltipContent>
-          </Tooltip>
+          <Link
+            href={path}
+            aria-label={name}
+            aria-current={pathname === path ? "page" : undefined}
+            className={`flex items-center group transition-colors text-muted-foreground hover:text-primary gap-1 justify-center duration-300 [&svg]:size-4 ${pathname == path && "text-primary"}`}
+            prefetch={true}
+          >
+            <span className="sm:hidden block" aria-hidden="true">
+              {icon}
+            </span>
+            <span className="hidden sm:block">{name}</span>
+          </Link>
         );
       })}
       <Shimmer text={"Open to work"} />

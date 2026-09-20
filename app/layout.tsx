@@ -102,7 +102,7 @@ export default function RootLayout({
             disableTransitionOnChange={false}
           >
             <PostHogProvider>
-              <div className="mx-auto max-w-2xl overflow-hidden py-5 min-h-screen border scroll-smooth bg-background relative sm:px-[18px]">
+              <div className="mx-auto max-w-xl overflow-hidden py-5 min-h-screen  scroll-smooth bg-background relative sm:px-[18px]">
                 <header className="px-2 sm:px-5 flex items-center justify-between py-4 pt-0">
                   <Navbar />
                   <ThemeToggle />
@@ -112,14 +112,13 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Border />
-                <Subscribe />
                 <footer className="mt-4 mx-6 flex items-center justify-between text-sm text-muted-foreground">
                   <div>© {new Date().getFullYear()} Tanav</div>
                   <div>
                     <FeedbackButton />
                   </div>
                 </footer>
-
+{/*
                 <div
                   aria-hidden="true"
                   className="absolute h-full w-5 bottom-0 top-0 -right-px border-x border-x-(--border) bg-[image:repeating-linear-gradient(315deg,_var(--border)_0,_var(--border)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed hidden sm:block"
@@ -127,7 +126,7 @@ export default function RootLayout({
                 <div
                   aria-hidden="true"
                   className="absolute h-full w-5 top-0 bottom-0 -left-px border-x border-x-(--border) bg-[image:repeating-linear-gradient(315deg,_var(--border)_0,_var(--border)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed hidden sm:block"
-                />
+                />*/}
               </div>
             </PostHogProvider>
           </ThemeProvider>

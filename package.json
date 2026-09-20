@@ -20,6 +20,7 @@
     "@tanstack/react-hotkeys": "^0.4.1",
     "@upstash/redis": "^1.36.0",
     "class-variance-authority": "^0.7.1",
+    "cn": "^0.3.0",
     "cnfast": "^0.0.8",
     "developer-icons": "^6.0.4",
     "gray-matter": "^4.0.3",

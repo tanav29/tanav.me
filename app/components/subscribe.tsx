@@ -67,7 +67,7 @@ export function Subscribe() {
   return (
     <section
       aria-labelledby="subscribe-heading"
-      className="mt-6 border-t border-(--border) px-4 pt-8 pb-2 sm:px-6"
+      className="mt-6 px-4 pt-8 pb-2 sm:px-6"
     >
       {celebrate && size.width > 0 ? (
         <Confetti

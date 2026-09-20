@@ -33,6 +33,7 @@ import Email from "./components/email";
 import { Suspense } from "react";
 import { projects } from "@/lib/projects";
 import { ProjectCard } from "./projects/page";
+import GitHubActivity from "@/components/ui/github-activity";
 
 export default function Page() {
   const recentProjects = projects.slice(0, 2);
@@ -60,22 +61,20 @@ export default function Page() {
             className="absolute top-0 bottom-0 z-10 h-full"
           />
         </div>*/}
-        <div className="flex items-end gap-3 relative">
+        <div className="flex items-end">
           {/* <ImagePop /> */}
-
-          <div className="absolute top-0 right-0">
+          <div className="w-full flex items-center justify-between">
+            <HomeText />
+          </div>
+          <div className="">
             <Suspense>
               <ViewerNumber />
             </Suspense>
           </div>
-
-          <div className="w-full flex items-center justify-between">
-            <HomeText />
-          </div>
         </div>
 
         <p className="text-[var(--text-muted)] leading-relaxed max-w-prose">
-          He is a software engineer passionate about building intelligent,
+          I am a software engineer passionate about building intelligent,
           scalable, and reliable systems. His work spans full stack development,
           AI powered applications, and distributed systems, with a strong focus
           on system design, backend engineering, and clean architecture. He
@@ -140,8 +139,6 @@ export default function Page() {
         </div>
       </section>
 
-      <Border />
-
       <section>
         <TechMarquee />
       </section>
@@ -149,12 +146,13 @@ export default function Page() {
       <Border />
 
       <Suspense>
-        <GithubCalendarClient username="tanav29" blockSize={7} />
+        <GitHubActivity username="tanav29" />
+        {/*<GithubCalendarClient username="tanav29" blockSize={7} />*/}
       </Suspense>
 
-      <Border />
+      {/*<Border />*/}
 
-      <h2 className="text-lg font-semibold text-(--text) px-4 sm:px-6 -my-3">
+      {/*<h2 className="text-md font-semibold text-(--text) px-4 sm:px-6 -my-3">
         Projects
       </h2>
 
@@ -171,12 +169,12 @@ export default function Page() {
           className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6">
           View all projects →
         </Link>
-      </section>
+      </section>*/}
 
       <Border />
 
       <h2 className="text-lg font-semibold text-(--text) px-4 sm:px-6 -my-3">
-        Experience
+        Experiences
       </h2>
 
       <Border />
@@ -199,18 +197,18 @@ export default function Page() {
                       href={job.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-bold text-[var(--text)] hover:underline">
+                      className="font-bold text-sm text-[var(--text)] hover:underline">
                       {job.company}
                     </a>
-                    <p className="text-sm text-[var(--text-muted)]">
+                    <p className="text-xs text-[var(--text-muted)]">
                       {job.role}
                     </p>
                   </div>
                   <div className="flex flex-col items-end justify-end">
-                    <span className="text-sm text-[var(--text-muted)]">
+                    <span className="text-xs text-[var(--text-muted)]">
                       {job.period}
                     </span>
-                    <span className="text-sm text-[var(--text-muted)]">
+                    <span className="text-xs text-[var(--text-muted)]">
                       {job.location}
                     </span>
                   </div>
@@ -222,13 +220,13 @@ export default function Page() {
         <Link
           href="/experience"
           className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6">
-          View all experience →
+          more
         </Link>
       </section>
 
-      <Border />
+      {/*<Border />*/}
 
-      <h2 className="text-lg font-semibold text-(--text) px-4 sm:px-6 -my-3">
+      {/*<h2 className="text-lg font-semibold text-(--text) px-4 sm:px-6 -my-3">
         Open Source
       </h2>
 
@@ -257,7 +255,7 @@ export default function Page() {
             </a>
           ))}
         </div>
-      </section>
+      </section>*/}
 
       <Border />
 
@@ -304,7 +302,7 @@ export default function Page() {
         <Link
           href="/blog"
           className="text-sm text-(--text-muted) hover:text-(--text) transition-colors">
-          Read more →
+          more
         </Link>
       </section>
     </section>

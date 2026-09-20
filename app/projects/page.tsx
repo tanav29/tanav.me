@@ -33,11 +33,11 @@ export function ProjectCard({
     <div className="group flex sm:flex-row flex-col items-start gap-4">
       {icon &&
         React.createElement(icon, {
-          className: "w-5 h-5 m-1/2 text-muted-foreground",
+          className: "w-4 h-4 m-1/2 text-muted-foreground",
         })}
       <div className="flex flex-col flex-1">
         <Tooltip
-          containerClassName="text-md sm:text-lg font-semibold text-[var(--text)] capitalize first-letter:text-lg -mt-1 w-fit"
+          containerClassName="text-sm cursor-pointer font-semibold text-[var(--text)] capitalize -mt-1 w-fit"
           content={
             <Image
               width={200}
@@ -72,7 +72,7 @@ export function ProjectCard({
                 <button className="outline-none cursor-pointer">
                   <Youtube
                     aria-hidden="true"
-                    className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors"
+                    className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors"
                   />
                 </button>
               }
@@ -111,7 +111,7 @@ export function ProjectCard({
             aria-label={`Open ${name} website`}>
             <Globe
               aria-hidden="true"
-              className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors"
+              className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors"
             />
           </a>
         )}
@@ -123,7 +123,7 @@ export function ProjectCard({
             aria-label={`Open ${name} GitHub repository`}>
             <IconBrandGithub
               aria-hidden="true"
-              className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors"
+              className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors"
             />
           </a>
         )}
@@ -135,7 +135,7 @@ export function ProjectCard({
             aria-label={`Open ${name} announcement`}>
             <IconBrandTwitter
               aria-hidden="true"
-              className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors"
+              className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors"
             />
           </a>
         )}
@@ -153,7 +153,7 @@ export default function ProjectsPage() {
   return (
     <section className="flex flex-col gap-6 px-4 sm:px-6">
       <div className="flex w-full items-center justify-between">
-        <h1 className="text-xl sm:text-2xl font-medium tracking-tight text-[var(--text)]">
+        <h1 className="text-lg font-medium tracking-tight text-[var(--text)]">
           Completed Projects
         </h1>
       </div>

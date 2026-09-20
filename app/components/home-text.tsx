@@ -8,18 +8,12 @@ const serif = Instrument_Serif({
 
 export default function HomeText() {
   return (
-    <h1 className="flex justify-center items-end ml-0 -mb-1">
       <span
         className={cn(
-          "text-4xl font-semibold text-(--text-muted) tracking-tight",
+          "text-3xl font-semibold text-(--text-muted) tracking-tight flex justify-center items-end ml-0 -mb-1",
           serif.className,
         )}>
-        Hi! I am
+        Hi! I am Tanav
       </span>
-      <div className="w-1.5" />
-      <span className="text-4xl font-semibold text-(--text) tracking-tighter">
-        Tanav
-      </span>
-    </h1>
   );
 }

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ExperiencePage() {
   return (
     <section className="flex flex-col gap-8 px-4 sm:px-6">
-      <h1 className="sm:text-2xl text-xl font-medium tracking-tight text-[var(--text)]">
+      <h1 className="text-lg font-medium tracking-tight text-[var(--text)]">
         Experience
       </h1>
       <div className="flex flex-col gap-8">
@@ -20,7 +20,7 @@ export default function ExperiencePage() {
               alt={job.company}
               width={40}
               height={40}
-              className="w-12 h-12 sm:mb-0 mb-2 rounded-md border border-[var(--border)]"
+              className="w-10 h-10 sm:mb-0 mb-2 rounded-md border border-[var(--border)]"
               src={job.img}
             />
             <div className="flex flex-2 flex-col gap-2">
@@ -28,23 +28,23 @@ export default function ExperiencePage() {
                 <div>
                   <a
                     href={job.url}
-                    className="font-bold text-[var(--text)] hover:underline"
+                    className="font-bold text-[var(--text)] hover:underline text-sm"
                   >
                     {job.company}
                   </a>
-                  <p className="text-sm text-[var(--text-muted)]">{job.role}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{job.role}</p>
                 </div>
                 <div className="flex flex-col items-end justify-end">
-                  <span className="text-sm text-[var(--text-muted)]">
+                  <span className="text-xs text-[var(--text-muted)]">
                     {job.period}
                   </span>
-                  <span className="text-sm text-[var(--text-muted)]">
+                  <span className="text-xs text-[var(--text-muted)]">
                     {job.location}
                   </span>
                 </div>
               </div>
 
-              <p className="text-sm text-[var(--text-muted)]">
+              <p className="text-xs text-[var(--text-muted)]">
                 {job.description}
               </p>
             </div>
