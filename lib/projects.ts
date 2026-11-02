@@ -1,4 +1,4 @@
-import {
+﻿import {
   IconPencil,
   IconVideo,
   IconRocket,
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     name: "Log Build in Public",
     web: "https://logbip.vercel.app/",
     brief:
-      "A social platform where builder / learner can log there progress publically.",
+      "A social platform for builders and learners to share their progress.",
     tech: ["Prisma", "Better Auth", "Hono"],
   },
   {
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     name: "Vidora",
     web: "https://vidora.tanav.me",
     brief:
-      "a complete Mux-like video transcoding and streaming platform with a web interface.",
+      "A video transcoding and streaming platform with a web interface.",
     tech: ["NextJs", "FFMPEG", "Docker", "Redis", "R2"],
   },
   {
@@ -120,3 +120,4 @@ export const projects: Project[] = [
     tech: ["React", "Convex"],
   },
 ];
+

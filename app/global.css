@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @import "./typeset.css";
 /*@plugin '@tailwindcss/typography';*/
 @plugin 'tailwindcss-animate';
@@ -220,3 +220,34 @@ html {
   --typeset-leading: 1.75;
   --typeset-flow: 1.25em;
 }
+
+.contribution-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(7, 6px);
+    grid-auto-columns: 6px;
+    gap: 2px;
+    width: max-content;
+}
+.contribution-day { border-radius: 2px; background: #e5e7eb; }
+.contribution-level-1 { background: #9be9a8; }
+.contribution-level-2 { background: #40c463; }
+.contribution-level-3 { background: #30a14e; }
+.contribution-level-4 { background: #216e39; }
+.dark .contribution-day { background: #30363d; }
+.dark .contribution-level-1 { background: #0e4429; }
+.dark .contribution-level-2 { background: #006d32; }
+.dark .contribution-level-3 { background: #26a641; }
+.dark .contribution-level-4 { background: #39d353; }
+.contribution-key { display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: #e5e7eb; }
+.contribution-key.contribution-level-1 { background: #9be9a8; }
+.contribution-key.contribution-level-2 { background: #40c463; }
+.contribution-key.contribution-level-3 { background: #30a14e; }
+.contribution-key.contribution-level-4 { background: #216e39; }
+.dark .contribution-key { background: #30363d; }
+.dark .contribution-key.contribution-level-1 { background: #0e4429; }
+.dark .contribution-key.contribution-level-2 { background: #006d32; }
+.dark .contribution-key.contribution-level-3 { background: #26a641; }
+.dark .contribution-key.contribution-level-4 { background: #39d353; }
+
+

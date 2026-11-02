@@ -1,4 +1,4 @@
-export interface Experience {
+﻿export interface Experience {
   company: string;
   img: string;
   url: string;
@@ -25,7 +25,7 @@ export const experience: Experience[] = [
     role: "Open Source Contributor",
     period: "Oct 2025 - Nov 2025",
     location: "Remote",
-    description: "Contributed to OSS projects includign dodo payments billing sdk.",
+    description: "Contributed to OSS projects including the Dodo Payments billing SDK.",
   },
   {
     company: "Hirewiser",
@@ -46,3 +46,4 @@ export const experience: Experience[] = [
     description: "Building dapps on ICP blockchain with Rust.",
   },
 ];
+

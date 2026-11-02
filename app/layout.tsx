@@ -1,20 +1,16 @@
-import "./global.css";
+﻿import "./global.css";
 import type { Metadata } from "next";
 import { Navbar } from "./components/nav";
-import { DM_Sans, Geist } from "next/font/google";
+import { Geist } from "next/font/google";
 import { PostHogProvider } from "./components/PostHogProvider";
 import { ThemeProvider } from "./components/theme-provider";
-import { ThemeToggle } from "./components/theme-toggle";
 import { FeedbackButton } from "./components/feedback";
-import { Subscribe } from "./components/subscribe";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Border from "./components/border";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
-const sans = DM_Sans({
-  subsets: ["latin"],
-});
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tanav.me"),
@@ -93,19 +89,18 @@ export default function RootLayout({
         />
       </head>
       {/*<ViewTransition>*/}
-      <body className={`${sans.className} antialiased overflow-y-scroll`}>
+      <body className="antialiased overflow-y-scroll bg-neutral-100">
         <TooltipProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            forcedTheme="light"
             disableTransitionOnChange={false}
           >
             <PostHogProvider>
-              <div className="mx-auto max-w-xl overflow-hidden py-5 min-h-screen  scroll-smooth bg-background relative sm:px-[18px]">
+              <div className="mx-auto max-w-xl overflow-hidden py-5 min-h-screen scroll-smooth bg-white relative sm:px-[18px]">
                 <header className="px-2 sm:px-5 flex items-center justify-between py-4 pt-0">
                   <Navbar />
-                  <ThemeToggle />
+                  
                 </header>
                 <Border />
                 <main id="main-content" className="my-6 min-h-[77vh]">
@@ -113,7 +108,7 @@ export default function RootLayout({
                 </main>
                 <Border />
                 <footer className="mt-4 mx-6 flex items-center justify-between text-sm text-muted-foreground">
-                  <div>© {new Date().getFullYear()} Tanav</div>
+                  <div>Â© {new Date().getFullYear()} Tanav</div>
                   <div>
                     <FeedbackButton />
                   </div>
@@ -136,3 +131,4 @@ export default function RootLayout({
     </html>
   );
 }
+

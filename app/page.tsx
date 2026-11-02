@@ -1,310 +1,96 @@
-import { oss } from "../lib/oss";
-import getBlogMetadata from "../lib/posts";
-import { experience } from "../lib/experience";
-import {
-  ChevronRightIcon,
-  GitPullRequestArrowIcon,
-  FileTextIcon,
-  SendIcon,
-  Calendar,
-} from "lucide-react";
-import GithubCalendarClient from "./components/github-calendar";
-import Image from "next/image";
-import { CPlusPlus, Go, Python, TypeScript } from "developer-icons";
-import ViewerNumber from "./components/viewer";
-import { SiLeetcode, SiRust } from "react-icons/si";
+﻿import Image from "next/image";
 import Link from "next/link";
-import IconLink from "./components/icon-link";
-import {
-  IconBrandGithub,
-  IconBrandGithubFilled,
-  IconBrandLeetcode,
-  IconBrandLinkedin,
-  IconBrandLinkedinFilled,
-  IconBrandX,
-  IconCalendarWeekFilled,
-  IconFileFilled,
-} from "@tabler/icons-react";
-import Border from "./components/border";
-import { TechMarquee } from "./components/techmarquee";
-import HomeText from "./components/home-text";
-import ImagePop from "./components/image-pop";
-import Email from "./components/email";
 import { Suspense } from "react";
+import { experience } from "@/lib/experience";
+import { oss } from "@/lib/oss";
 import { projects } from "@/lib/projects";
-import { ProjectCard } from "./projects/page";
 import GitHubActivity from "@/components/ui/github-activity";
+import MergedPullRequests from "./components/merged-pull-requests";
+import ViewerNumber from "./components/viewer";
+
+const section = "border-t border-neutral-100 py-7";
+const heading = "text-sm font-medium text-neutral-900";
+const more = "text-xs text-neutral-500 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4";
+const link = "text-neutral-600 underline decoration-neutral-300 underline-offset-4 hover:text-neutral-900 hover:decoration-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4";
 
 export default function Page() {
-  const recentProjects = projects.slice(0, 2);
-  const recentPosts = getBlogMetadata("blogs").slice(0, 3);
-
   return (
-    <section className="flex flex-col gap-6">
-      <section className="flex flex-col gap-6 px-4 py-6 sm:px-6">
-        {/*<div className="rounded-lg border border-(--border) overflow-hidden relative h-auto aspect-18/6">
-          <Image
-            src="/header.jpg"
-            alt=""
-            width={2}
-            loading="eager"
-            height={0.5}
-            className="w-full h-full object-contain blur-sm scale-105"
-          />
-          <Image
-            src="/header.jpg"
-            alt="Tanav Poswal portfolio banner"
-            width={800}
-            loading="lazy"
-            height={200}
-            quality={75}
-            className="absolute top-0 bottom-0 z-10 h-full"
-          />
-        </div>*/}
-        <div className="flex items-end">
-          {/* <ImagePop /> */}
-          <div className="w-full flex items-center justify-between">
-            <HomeText />
+    <div className="px-5 sm:px-7">
+      <section className="pb-8 pt-3">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <Image src="/pfp.png" alt="" width={44} height={44} priority className="size-11 rounded-full object-cover" />
+            <div>
+              <h1 className="text-xl font-medium tracking-tight text-neutral-900">tanav poswal</h1>
+              <p className="mt-0.5 text-xs text-neutral-500">software engineer based in india</p>
+            </div>
           </div>
-          <div className="">
-            <Suspense>
-              <ViewerNumber />
-            </Suspense>
-          </div>
+          <Suspense fallback={null}><ViewerNumber /></Suspense>
         </div>
-
-        <p className="text-[var(--text-muted)] leading-relaxed max-w-prose">
-          I am a software engineer passionate about building intelligent,
-          scalable, and reliable systems. His work spans full stack development,
-          AI powered applications, and distributed systems, with a strong focus
-          on system design, backend engineering, and clean architecture. He
-          enjoys solving complex problems by understanding first principles,
-          carefully evaluating tradeoffs, and designing software that remains
-          maintainable as it grows.
-        </p>
-
-        {/*<div className="flex gap-2 text-sm p-1/2">
-          <a
-            href="https://dub.sh/tanav-resume"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 ring-1 ring-border active:translate-y-0.5 transition-transform rounded-xl flex gap-3 items-center justify-center cursor-pointer bg-linear-to-b from-(--bg) to-(--text)/10 group font-semibold"
-          >
-            <FileTextIcon
-              aria-hidden="true"
-              className="rotate-6 w-4 h-4 group-hover:rotate-12 transition-transform duration-200"
-            />
-            Resume
-          </a>
-          <a
-            href="https://cal.com/tanav29"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 ring-1 ring-border active:translate-y-0.5 transition-transform rounded-xl flex gap-3 items-center justify-center cursor-pointer bg-linear-to-b from-(--text) to-muted-foreground text-(--bg) group font-semibold"
-          >
-            <SendIcon
-              aria-hidden="true"
-              className="w-4 h-4 group-hover:-rotate-5 transition"
-            />
-            Get in touch
-          </a>
-        </div>*/}
-
-        <div className="flex flex-wrap gap-2 text-sm text-[var(--text)] items-center mt-2">
-          <IconLink link="https://x.com/tanavtwt" tooltip="X">
-            <IconBrandX className="w-6 h-6 stroke-2" aria-hidden="true" />
-          </IconLink>
-          <IconLink link="https://github.com/tanav29" tooltip="Github">
-            <IconBrandGithubFilled className="w-6 h-6" aria-hidden="true" />
-          </IconLink>
-          <IconLink link="https://linkedin.com/in/tanav29" tooltip="Linkedin">
-            <IconBrandLinkedinFilled className="w-6 h-6" aria-hidden="true" />
-          </IconLink>
-          <IconLink link="https://leetcode.com/tanav29" tooltip="Leetcode">
-            <IconBrandLeetcode
-              className="w-6 h-6 -stroke-3"
-              aria-hidden="true"
-            />
-          </IconLink>
-          <Email />
-          <IconLink link="https://cal.com/tanav29" tooltip="CalCom">
-            <IconCalendarWeekFilled
-              className="w-6 h-6 stroke-2"
-              aria-hidden="true"
-            />
-          </IconLink>
-          <IconLink link="https://dub.sh/tanav-resume" tooltip="Resume">
-            <IconFileFilled className="w-6 h-6" aria-hidden="true" />
-          </IconLink>
+        <p className="mt-5 max-w-md text-sm leading-6 text-neutral-600">i build web applications, backend systems, and open-source software.</p>
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs">
+          <a className={link} href="https://github.com/tanav29">github</a>
+          <a className={link} href="https://linkedin.com/in/tanav29">linkedin</a>
+          <a className={link} href="https://dub.sh/tanav-resume">resume</a>
+          <a className={link} href="mailto:hey@tanav.me">email</a>
+          <a className={link} href="https://cal.com/tanav29">contact</a>
         </div>
       </section>
 
-      <section>
-        <TechMarquee />
+      <section className={section} aria-labelledby="activity-heading">
+        <div className="flex items-center justify-between gap-4">
+          <h2 id="activity-heading" className={heading}>github activity</h2>
+          <a href="https://github.com/tanav29" className={more}>view profile ↗</a>
+        </div>
+        <GitHubActivity username="tanav29" className="mt-4" />
       </section>
 
-      <Border />
-
-      <Suspense>
-        <GitHubActivity username="tanav29" />
-        {/*<GithubCalendarClient username="tanav29" blockSize={7} />*/}
-      </Suspense>
-
-      {/*<Border />*/}
-
-      {/*<h2 className="text-md font-semibold text-(--text) px-4 sm:px-6 -my-3">
-        Projects
-      </h2>
-
-      <Border />
-
-      <section className="flex flex-col px-4 sm:px-6">
-        <div className="flex flex-col gap-6">
-          {recentProjects.map((project) => (
-            <ProjectCard key={project.name} {...project} />
+      <section className={section} aria-labelledby="oss-heading">
+        <h2 id="oss-heading" className={heading}>open source</h2>
+        <div className="mt-2"><Suspense fallback={<span className="text-xs text-neutral-500">loading merged pull requests…</span>}><MergedPullRequests /></Suspense></div>
+        <h3 className="mt-5 text-xs text-neutral-500">notable pull requests</h3>
+        <ul className="mt-2 divide-y divide-neutral-100">
+          {oss.map((pr) => (
+            <li key={pr.link}>
+              <a href={pr.link} className="group flex items-start justify-between gap-3 py-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-4">
+                <span><span className="block text-neutral-800 group-hover:underline underline-offset-4">{pr.name}</span><span className="mt-1 block text-xs text-neutral-500">{pr.repo}</span></span>
+                <span aria-hidden="true" className="text-xs text-neutral-400">↗</span>
+              </a>
+            </li>
           ))}
-        </div>
-        <Link
-          href="/projects"
-          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6">
-          View all projects →
-        </Link>
-      </section>*/}
+        </ul>
+      </section>
 
-      <Border />
-
-      <h2 className="text-lg font-semibold text-(--text) px-4 sm:px-6 -my-3">
-        Experiences
-      </h2>
-
-      <Border />
-
-      <section className="flex flex-col px-4 sm:px-6">
-        <div className="flex flex-col gap-6">
-          {experience.map((job) => (
-            <div key={job.company} className="flex gap-3 w-full">
-              <Image
-                alt={job.company}
-                width={40}
-                height={40}
-                className="w-10 h-10 rounded-md border border-[var(--border)]"
-                src={job.img}
-              />
-              <div className="flex flex-1 flex-col gap-2">
-                <div className="flex justify-between items-baseline">
-                  <div>
-                    <a
-                      href={job.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-bold text-sm text-[var(--text)] hover:underline">
-                      {job.company}
-                    </a>
-                    <p className="text-xs text-[var(--text-muted)]">
-                      {job.role}
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-end justify-end">
-                    <span className="text-xs text-[var(--text-muted)]">
-                      {job.period}
-                    </span>
-                    <span className="text-xs text-[var(--text-muted)]">
-                      {job.location}
-                    </span>
-                  </div>
+      <section className={section} aria-labelledby="projects-heading">
+        <div className="flex items-center justify-between gap-4"><h2 id="projects-heading" className={heading}>selected projects</h2><Link href="/projects" className={more}>all projects →</Link></div>
+        <div className="mt-3 divide-y divide-neutral-100">
+          {projects.slice(0, 3).map((project) => (
+            <article key={project.name} className="py-3 first:pt-1 last:pb-0">
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="text-sm font-medium text-neutral-800">{project.name}</h3>
+                <div className="flex shrink-0 gap-3">
+                  {project.git && <a className={more} href={project.git}>code<span className="sr-only"> for {project.name}</span> ↗</a>}
+                  {project.web && <a className={more} href={project.web}>live<span className="sr-only"> site for {project.name}</span> ↗</a>}
                 </div>
               </div>
-            </div>
+              <p className="mt-1 text-xs leading-5 text-neutral-500">{project.brief}</p>
+            </article>
           ))}
         </div>
-        <Link
-          href="/experience"
-          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors pt-6">
-          more
-        </Link>
       </section>
 
-      {/*<Border />*/}
-
-      {/*<h2 className="text-lg font-semibold text-(--text) px-4 sm:px-6 -my-3">
-        Open Source
-      </h2>
-
-      <Border />
-
-      <section className="flex flex-col gap-8 px-4 sm:px-6">
-        <div className="flex flex-col gap-6">
-          {oss.map((contri) => (
-            <a
-              key={contri.name}
-              href={contri.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 transition-colors">
-              <GitPullRequestArrowIcon
-                aria-hidden="true"
-                className="h-4 w-4 text-purple-600"
-              />
-              <h3 className="text-(--text) group-hover:text-(--text-muted) text-sm transition-colors">
-                {contri.name}
-              </h3>
-              <ChevronRightIcon
-                aria-hidden="true"
-                className="ml-auto h-4 w-4 text-(--text-muted)"
-              />
-            </a>
+      <section className={section} aria-labelledby="experience-heading">
+        <div className="flex items-center justify-between gap-4"><h2 id="experience-heading" className={heading}>experience</h2><Link href="/experience" className={more}>more details →</Link></div>
+        <div className="mt-4 space-y-4">
+          {experience.map((job) => (
+            <article key={job.company} className="flex items-start justify-between gap-3">
+              <div><h3 className="text-sm font-medium text-neutral-800"><a href={job.url} className="hover:underline underline-offset-4">{job.company}</a></h3><p className="mt-1 text-xs text-neutral-500">{job.role}</p></div>
+              <span className="shrink-0 text-xs text-neutral-500">{job.period}</span>
+            </article>
           ))}
         </div>
-      </section>*/}
-
-      <Border />
-
-      <h2 className="text-lg font-semibold text-(--text) px-4 sm:px-6 -my-3">
-        Writing
-      </h2>
-
-      <Border />
-
-      <section className="flex flex-col gap-8 px-4 sm:px-6">
-        <div className="flex flex-col gap-6">
-          {recentPosts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="group flex flex-col gap-2">
-              <div className="flex items-baseline justify-between">
-                <h3 className="text-sm text-(--text) group-hover:text-(--text-muted) transition-colors">
-                  {post.title}
-                </h3>
-                <span className="text-xs text-(--text-muted) tabular-nums">
-                  {
-                    [
-                      "Jan",
-                      "Feb",
-                      "Mar",
-                      "Apr",
-                      "May",
-                      "Jun",
-                      "Jul",
-                      "Aug",
-                      "Sep",
-                      "Oct",
-                      "Nov",
-                      "Dec",
-                    ][post.date.getUTCMonth()]
-                  }{" "}
-                  {post.date.getUTCFullYear()}
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <Link
-          href="/blog"
-          className="text-sm text-(--text-muted) hover:text-(--text) transition-colors">
-          more
-        </Link>
       </section>
-    </section>
+      <section className={`${section} flex items-center justify-between gap-4`}><h2 className={heading}>writing</h2><Link href="/blog" className={more}>read the blog →</Link></section>
+    </div>
   );
 }
