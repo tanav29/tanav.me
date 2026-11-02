@@ -21,7 +21,7 @@ export default function Page() {
           <div className="flex items-center gap-3">
             <Image src="/pfp.png" alt="" width={44} height={44} priority className="size-11 rounded-full object-cover" />
             <div>
-              <h1 className="text-xl font-medium tracking-tight text-neutral-900">tanav poswal</h1>
+              <h1 className="text-xl font-medium tracking-tight text-neutral-900">Tanav Poswal</h1>
               <p className="mt-0.5 text-xs text-neutral-500">software engineer based in india</p>
             </div>
           </div>
@@ -37,24 +37,19 @@ export default function Page() {
         </div>
       </section>
 
-      <section className={section} aria-labelledby="activity-heading">
-        <div className="flex items-center justify-between gap-4">
-          <h2 id="activity-heading" className={heading}>github activity</h2>
-          <a href="https://github.com/tanav29" className={more}>view profile ↗</a>
-        </div>
-        <GitHubActivity username="tanav29" className="mt-4" />
-      </section>
+      <GitHubActivity username="tanav29" className="" />
 
       <section className={section} aria-labelledby="oss-heading">
+        <div className="flex items-center justify-between">
         <h2 id="oss-heading" className={heading}>open source</h2>
         <div className="mt-2"><Suspense fallback={<span className="text-xs text-neutral-500">loading merged pull requests…</span>}><MergedPullRequests /></Suspense></div>
-        <h3 className="mt-5 text-xs text-neutral-500">notable pull requests</h3>
+        </div>
         <ul className="mt-2 divide-y divide-neutral-100">
           {oss.map((pr) => (
             <li key={pr.link}>
               <a href={pr.link} className="group flex items-start justify-between gap-3 py-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-4">
                 <span><span className="block text-neutral-800 group-hover:underline underline-offset-4">{pr.name}</span><span className="mt-1 block text-xs text-neutral-500">{pr.repo}</span></span>
-                <span aria-hidden="true" className="text-xs text-neutral-400">↗</span>
+                <span aria-hidden="true" className="text-xs text-neutral-400"></span>
               </a>
             </li>
           ))}
@@ -62,15 +57,15 @@ export default function Page() {
       </section>
 
       <section className={section} aria-labelledby="projects-heading">
-        <div className="flex items-center justify-between gap-4"><h2 id="projects-heading" className={heading}>selected projects</h2><Link href="/projects" className={more}>all projects →</Link></div>
+        <div className="flex items-center justify-between gap-4"><h2 id="projects-heading" className={heading}>selected projects</h2><Link href="/projects" className={more}>projects</Link></div>
         <div className="mt-3 divide-y divide-neutral-100">
           {projects.slice(0, 3).map((project) => (
             <article key={project.name} className="py-3 first:pt-1 last:pb-0">
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="text-sm font-medium text-neutral-800">{project.name}</h3>
                 <div className="flex shrink-0 gap-3">
-                  {project.git && <a className={more} href={project.git}>code<span className="sr-only"> for {project.name}</span> ↗</a>}
-                  {project.web && <a className={more} href={project.web}>live<span className="sr-only"> site for {project.name}</span> ↗</a>}
+                  {project.git && <a className={more} href={project.git}>code<span className="sr-only"> for {project.name}</span> </a>}
+                  {project.web && <a className={more} href={project.web}>live<span className="sr-only"> site for {project.name}</span> </a>}
                 </div>
               </div>
               <p className="mt-1 text-xs leading-5 text-neutral-500">{project.brief}</p>
@@ -80,7 +75,7 @@ export default function Page() {
       </section>
 
       <section className={section} aria-labelledby="experience-heading">
-        <div className="flex items-center justify-between gap-4"><h2 id="experience-heading" className={heading}>experience</h2><Link href="/experience" className={more}>more details →</Link></div>
+        <div className="flex items-center justify-between gap-4"><h2 id="experience-heading" className={heading}>experience</h2><Link href="/experience" className={more}>details</Link></div>
         <div className="mt-4 space-y-4">
           {experience.map((job) => (
             <article key={job.company} className="flex items-start justify-between gap-3">
@@ -90,7 +85,7 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section className={`${section} flex items-center justify-between gap-4`}><h2 className={heading}>writing</h2><Link href="/blog" className={more}>read the blog →</Link></section>
+      <section className={`${section} flex items-center justify-between gap-4`}><h2 className={heading}>writing</h2><Link href="/blog" className={more}>blogs</Link></section>
     </div>
   );
 }

@@ -580,14 +580,14 @@ const GitHubActivity = ({
     <div
       data-slot="github-activity"
       className={cn(
-        "relative max-w-full overflow-hidden rounded-[28px] bg-background p-4",
+        "relative max-w-full overflow-hidden bg-background p-0",
         repos.length > 0 && "pb-[76px]",
         className,
       )}
       style={{ width, ...style }}
       {...props}
     >
-      <p className="mb-4 text-base font-medium text-foreground px-1.5">
+      <p className="mb-4 text-base font-medium text-foreground px-1.5 text-xs">
         {heading}
       </p>
 

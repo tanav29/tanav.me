@@ -89,7 +89,7 @@ export default function RootLayout({
         />
       </head>
       {/*<ViewTransition>*/}
-      <body className="antialiased overflow-y-scroll bg-neutral-100">
+      <body className="antialiased overflow-y-scroll">
         <TooltipProvider>
           <ThemeProvider
             attribute="class"
@@ -100,15 +100,15 @@ export default function RootLayout({
               <div className="mx-auto max-w-xl overflow-hidden py-5 min-h-screen scroll-smooth bg-white relative sm:px-[18px]">
                 <header className="px-2 sm:px-5 flex items-center justify-between py-4 pt-0">
                   <Navbar />
-                  
+
                 </header>
                 <Border />
                 <main id="main-content" className="my-6 min-h-[77vh]">
                   {children}
                 </main>
                 <Border />
-                <footer className="mt-4 mx-6 flex items-center justify-between text-sm text-muted-foreground">
-                  <div>Â© {new Date().getFullYear()} Tanav</div>
+                <footer className="mt-4 mx-6 flex items-center justify-between text-xs text-muted-foreground">
+                  <div>{new Date().getFullYear()} Tanav</div>
                   <div>
                     <FeedbackButton />
                   </div>
@@ -131,4 +131,3 @@ export default function RootLayout({
     </html>
   );
 }
-

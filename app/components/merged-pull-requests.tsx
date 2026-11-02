@@ -16,5 +16,5 @@ export default async function MergedPullRequests() {
     // A link to the search remains available if GitHub is unreachable.
   }
 
-  return <a href={searchUrl} className="text-xs text-neutral-500 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4">{count === null ? "view merged pull requests" : <><span className="font-medium text-neutral-900 tabular-nums">{count}</span> merged pull requests in other accounts</>}</a>;
+  return <a href={searchUrl} className="text-xs text-neutral-500 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4">{count === null ? "view merged pull requests" : <><span className="font-medium text-neutral-900 tabular-nums">{count}</span> prs</>}</a>;
 }
