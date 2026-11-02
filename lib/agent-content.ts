@@ -1,99 +1,78 @@
 import fs from "fs";
 import matter from "gray-matter";
 import { experience } from "./experience";
+import { oss } from "./oss";
 import { projects } from "./projects";
 import getBlogMetadata from "./posts";
 
 const SITE_URL = "https://tanav.me";
 const textUrl = (path: string) => `${SITE_URL}/text${path === "/" ? "/home" : path}`;
 
-const home = `# Tanav Poswal — Full-stack Software Engineer
+const home = `# Tanav Poswal
 
-Tanav Poswal is a full-stack software engineer based in India. He builds intelligent, scalable, and reliable software, with particular interest in backend engineering, distributed systems, system design, AI-powered applications, and clean architecture. His approach starts with first principles: understand the problem, weigh the trade-offs, and build systems that stay maintainable as they grow.
+Software engineer based in India. I build web applications, backend systems, and open-source software.
 
-This portfolio documents Tanav's selected projects, professional experience, open-source work, and technical writing. Browse [projects](${textUrl("/projects")}), [experience](${textUrl("/experience")}), or the [writing archive](${textUrl("/blog")}). For developer-oriented resources and machine-readable entry points, visit [Developer Resources](${textUrl("/developer")}) and [llm.txt](${SITE_URL}/llm.txt).
+- [GitHub](https://github.com/tanav29)
+- [LinkedIn](https://linkedin.com/in/tanav29)
+- [Resume](https://dub.sh/tanav-resume)
+- [Email](mailto:hey@tanav.me)
+- [Contact](https://cal.com/tanav29)
+
+## Open source
+
+${oss.map((pr) => `- [${pr.name}](${pr.link}) — ${pr.repo}`).join("\n")}
 `;
 
-const notFound = `# Page not found
+const projectContent = () => `# Projects by Tanav Poswal\n\n${projects.map((project) => {
+  const links = [
+    project.web && `[Website](${project.web})`,
+    project.git && `[Source](${project.git})`,
+    project.info && `[Announcement](${project.info})`,
+    project.video && `[Video](https://www.youtube.com/watch?v=${project.video})`,
+    project.img && `[Image](${SITE_URL}${project.img})`,
+  ].filter(Boolean).join(" · ");
+  return `## ${project.name}\n\n${project.brief}\n\nTechnologies: ${project.tech.join(", ")}.\n\n${links}`;
+}).join("\n\n")}\n`;
 
-The requested page does not exist on Tanav Poswal's portfolio.
+const experienceContent = () => `# Experience\n\n${experience.map((job) =>
+  `## [${job.company}](${job.url})\n\n${job.role} — ${job.period}, ${job.location}\n\n${job.description}\n\n[Image](${SITE_URL}${job.img})`
+).join("\n\n")}\n`;
 
-- [Home](${SITE_URL}/)
-- [Projects](${SITE_URL}/projects)
-- [Experience](${SITE_URL}/experience)
-- [Writing](${SITE_URL}/blog)
-- [Sitemap](${SITE_URL}/sitemap.xml)
-- [LLMs guide](${SITE_URL}/llms.txt)
-`;
+function blogPost(slug: string) {
+  const file = `blogs/${slug}.md`;
+  if (!fs.existsSync(file)) return null;
+  const post = matter(fs.readFileSync(file, "utf8"));
+  return `# ${post.data.title}\n\nDate: ${new Date(post.data.date).toISOString().slice(0, 10)}\n\n${post.content.trim()}\n`;
+}
 
 export function getAgentMarkdown(pathname: string): { body: string; status: number } {
   if (pathname === "/") return { body: home, status: 200 };
-
-  if (pathname === "/projects") {
-    const items = projects
-      .map((project) => `## ${project.name}\n\n${project.brief}\n\nTechnologies: ${project.tech.join(", ")}.\n\n${project.web ? `[Website](${project.web})` : ""}${project.git ? ` [Source](${project.git})` : ""}`)
-      .join("\n\n");
-    return { body: `# Projects by Tanav Poswal\n\n${items}\n`, status: 200 };
-  }
-
-  if (pathname === "/experience") {
-    const items = experience
-      .map((job) => `## [${job.company}](${job.url})\n\n${job.role} — ${job.period}, ${job.location}\n\n${job.description}`)
-      .join("\n\n");
-    return { body: `# Experience\n\n${items}\n`, status: 200 };
-  }
-
+  if (pathname === "/projects") return { body: projectContent(), status: 200 };
+  if (pathname === "/experience") return { body: experienceContent(), status: 200 };
   if (pathname === "/blog") {
-    const posts = getBlogMetadata("blogs")
-      .map((post) => `- [${post.title}](${textUrl(`/blog/${post.slug}`)}) — ${post.date.toISOString().slice(0, 10)}`)
-      .join("\n");
+    const posts = getBlogMetadata("blogs").map((post) =>
+      `- [${post.title}](${textUrl(`/blog/${post.slug}`)}) — ${post.date.toISOString().slice(0, 10)}`
+    ).join("\n");
     return { body: `# Writing by Tanav Poswal\n\n${posts}\n`, status: 200 };
   }
-
-  if (pathname === "/developer") {
-    return {
-      body: `# Tanav Poswal Developer Resources
-
-- [llms.txt](${SITE_URL}/llms.txt) — concise site guide for language models and agents.
-- [sitemap.xml](${SITE_URL}/sitemap.xml) — machine-readable public-page inventory.
-- [Projects](${textUrl("/projects")}) — project-specific source and deployment links.
-
-Tanav Poswal does not currently publish a public API, OpenAPI specification, authentication guide, webhook service, or MCP server for this portfolio.
-`,
-      status: 200,
-    };
-  }
-
   const match = pathname.match(/^\/blog\/([a-z0-9-]+)$/i);
-  if (match) {
-    const file = `blogs/${match[1]}.md`;
-    if (fs.existsSync(file)) {
-      const post = matter(fs.readFileSync(file, "utf8"));
-      return { body: `# ${post.data.title}\n\n${post.content.trim()}\n`, status: 200 };
-    }
-  }
+  const post = match && blogPost(match[1]);
+  if (post) return { body: post, status: 200 };
+  return { body: `# Page not found\n\nSee the [portfolio](${SITE_URL}/) or [complete portfolio text](${SITE_URL}/llms-full.txt).\n`, status: 404 };
+}
 
-  return { body: notFound, status: 404 };
+export function getFullPortfolio() {
+  const posts = getBlogMetadata("blogs").map((post) => blogPost(post.slug)).join("\n\n---\n\n");
+  return [home, projectContent(), experienceContent(), `# Writing\n\n${posts}`].join("\n\n---\n\n");
 }
 
 export const llmsText = `# Tanav Poswal
 
-> Personal portfolio of Tanav Poswal, a full-stack software engineer focused on AI-powered applications, backend systems, distributed systems, and clean architecture.
+> Portfolio of Tanav Poswal, a software engineer based in India.
 
-## Main pages
-
-- [Home](${textUrl("/")}): biography and portfolio overview.
-- [Projects](${textUrl("/projects")}): selected software projects and source links.
-- [Experience](${textUrl("/experience")}): professional experience.
-- [Writing](${textUrl("/blog")}): technical writing archive and links to articles in text format.
-
-## Developer resources
-
-- [Developer Resources](${textUrl("/developer")}): developer-resource index for Tanav Poswal.
-- [Sitemap](${SITE_URL}/sitemap.xml): machine-readable URL inventory.
-- [Markdown content negotiation](${SITE_URL}/): send \`Accept: text/markdown\` to receive Markdown from the main portfolio pages.
-
-For the human-readable site, visit ${SITE_URL}/.
-
-Tanav Poswal does not currently publish a public API, OpenAPI specification, authentication guide, webhook service, or MCP server for this portfolio. Project-specific source code is linked from the Projects page.
+- [Complete portfolio](${SITE_URL}/llms-full.txt): biography, links, projects, experience, open-source contributions, and full articles.
+- [Home](${textUrl("/")})
+- [Projects](${textUrl("/projects")})
+- [Experience](${textUrl("/experience")})
+- [Writing](${textUrl("/blog")})
 `;

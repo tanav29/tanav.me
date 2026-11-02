@@ -4,7 +4,7 @@ import getBlogMetadata from "@/lib/posts";
 const baseUrl = "https://tanav.me";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = ["", "/projects", "/experience", "/blog", "/developer"];
+  const staticPages = ["", "/projects", "/experience", "/blog"];
   const posts = getBlogMetadata("blogs");
   return [
     ...staticPages.map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date() })),
