@@ -5,12 +5,13 @@ import { projects } from "./projects";
 import getBlogMetadata from "./posts";
 
 const SITE_URL = "https://tanav.me";
+const textUrl = (path: string) => `${SITE_URL}/text${path === "/" ? "/home" : path}`;
 
 const home = `# Tanav Poswal — Full-stack Software Engineer
 
 Tanav Poswal is a full-stack software engineer based in India. He builds intelligent, scalable, and reliable software, with particular interest in backend engineering, distributed systems, system design, AI-powered applications, and clean architecture. His approach starts with first principles: understand the problem, weigh the trade-offs, and build systems that stay maintainable as they grow.
 
-This portfolio documents Tanav's selected projects, professional experience, open-source work, and technical writing. Browse [projects](${SITE_URL}/projects), [experience](${SITE_URL}/experience), or the [writing archive](${SITE_URL}/blog). For developer-oriented resources and machine-readable entry points, visit [Developer Resources](${SITE_URL}/developer) and [llms.txt](${SITE_URL}/llms.txt).
+This portfolio documents Tanav's selected projects, professional experience, open-source work, and technical writing. Browse [projects](${textUrl("/projects")}), [experience](${textUrl("/experience")}), or the [writing archive](${textUrl("/blog")}). For developer-oriented resources and machine-readable entry points, visit [Developer Resources](${textUrl("/developer")}) and [llm.txt](${SITE_URL}/llm.txt).
 `;
 
 const notFound = `# Page not found
@@ -44,7 +45,7 @@ export function getAgentMarkdown(pathname: string): { body: string; status: numb
 
   if (pathname === "/blog") {
     const posts = getBlogMetadata("blogs")
-      .map((post) => `- [${post.title}](${SITE_URL}/blog/${post.slug}) — ${post.date.toISOString().slice(0, 10)}`)
+      .map((post) => `- [${post.title}](${textUrl(`/blog/${post.slug}`)}) — ${post.date.toISOString().slice(0, 10)}`)
       .join("\n");
     return { body: `# Writing by Tanav Poswal\n\n${posts}\n`, status: 200 };
   }
@@ -55,7 +56,7 @@ export function getAgentMarkdown(pathname: string): { body: string; status: numb
 
 - [llms.txt](${SITE_URL}/llms.txt) — concise site guide for language models and agents.
 - [sitemap.xml](${SITE_URL}/sitemap.xml) — machine-readable public-page inventory.
-- [Projects](${SITE_URL}/projects) — project-specific source and deployment links.
+- [Projects](${textUrl("/projects")}) — project-specific source and deployment links.
 
 Tanav Poswal does not currently publish a public API, OpenAPI specification, authentication guide, webhook service, or MCP server for this portfolio.
 `,
@@ -81,16 +82,18 @@ export const llmsText = `# Tanav Poswal
 
 ## Main pages
 
-- [Home](${SITE_URL}/): biography and portfolio overview.
-- [Projects](${SITE_URL}/projects): selected software projects and source links.
-- [Experience](${SITE_URL}/experience): professional experience.
-- [Writing](${SITE_URL}/blog): technical writing archive.
+- [Home](${textUrl("/")}): biography and portfolio overview.
+- [Projects](${textUrl("/projects")}): selected software projects and source links.
+- [Experience](${textUrl("/experience")}): professional experience.
+- [Writing](${textUrl("/blog")}): technical writing archive and links to articles in text format.
 
 ## Developer resources
 
-- [Developer Resources](${SITE_URL}/developer): canonical developer-resource index for Tanav Poswal.
+- [Developer Resources](${textUrl("/developer")}): developer-resource index for Tanav Poswal.
 - [Sitemap](${SITE_URL}/sitemap.xml): machine-readable URL inventory.
 - [Markdown content negotiation](${SITE_URL}/): send \`Accept: text/markdown\` to receive Markdown from the main portfolio pages.
+
+For the human-readable site, visit ${SITE_URL}/.
 
 Tanav Poswal does not currently publish a public API, OpenAPI specification, authentication guide, webhook service, or MCP server for this portfolio. Project-specific source code is linked from the Projects page.
 `;

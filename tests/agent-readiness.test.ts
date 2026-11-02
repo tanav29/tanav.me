@@ -30,7 +30,14 @@ describe("agent-facing content", () => {
 
   test("llms.txt names the developer resource index", () => {
     expect(llmsText).toContain("Developer Resources");
-    expect(llmsText).toContain("https://tanav.me/developer");
+    expect(llmsText).toContain("https://tanav.me/text/developer");
+  });
+
+  test("the agent index and writing archive link to text pages", () => {
+    for (const path of ["home", "projects", "experience", "blog"]) {
+      expect(llmsText).toContain(`https://tanav.me/text/${path}`);
+    }
+    expect(getAgentMarkdown("/blog").body).toContain("https://tanav.me/text/blog/first-post");
   });
 
   test("blog Markdown preserves published article content", () => {

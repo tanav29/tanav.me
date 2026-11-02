@@ -27,7 +27,7 @@ export type RepoContribution = {
 
 const DEFAULT_ACCENT = "#39d353";
 const DEFAULT_CELL_SIZE = 11;
-const DEFAULT_LABEL = "Top contributions in:";
+const DEFAULT_LABEL = "Top repos ? last 3 months";
 const DEFAULT_MONTHS = 12;
 const WEEKS_PER_MONTH = 365.25 / 12 / 7;
 const STACK_LIMIT = 3;
@@ -113,18 +113,14 @@ function describeDay({ count, date }: Contribution) {
   return `${count} ${noun} on ${DATE_FORMAT.format(new Date(`${date}T00:00:00`))}`;
 }
 
-const CALENDAR_API = "https://github-contributions-api.jogruber.de/v4";
-const EVENTS_API = "https://api.github.com/users";
-
 type ApiDay = { date: string; count: number; level: number };
-type PushEvent = {
-  type: string;
-  repo?: { name: string };
-  payload?: { commits?: unknown[] };
+type RepoSearchResult = {
+  repos: { name: string; count: number; href: string; avatar: string }[];
+  sampled: boolean;
 };
 
 async function fetchCalendar(login: string) {
-  const res = await fetch(`${CALENDAR_API}/${login}?y=last`);
+  const res = await fetch(`/api/github-contributions?username=${encodeURIComponent(login)}`);
   if (!res.ok) return null;
 
   const days: ApiDay[] = (await res.json())?.contributions ?? [];
@@ -142,51 +138,43 @@ async function fetchCalendar(login: string) {
   }));
 }
 
-async function fetchRepos(login: string): Promise<RepoContribution[]> {
-  const res = await fetch(`${EVENTS_API}/${login}/events/public?per_page=100`);
-  if (!res.ok) return [];
+async function fetchRepos(login: string): Promise<{
+  repos: RepoContribution[];
+  sampled: boolean;
+}> {
+  const res = await fetch(`/api/github-repos?username=${encodeURIComponent(login)}`);
+  if (!res.ok) return { repos: [], sampled: false };
 
-  const events: PushEvent[] = await res.json();
-  const counts = new Map<string, number>();
-
-  for (const event of events) {
-    if (event.type !== "PushEvent" || !event.repo) continue;
-    const commits = event.payload?.commits?.length ?? 1;
-    counts.set(event.repo.name, (counts.get(event.repo.name) ?? 0) + commits);
-  }
-
-  return Array.from(counts.entries())
-    .sort(([, a], [, b]) => b - a)
-    .slice(0, STACK_LIMIT)
-    .map(([fullName, count]) => {
-      const [owner, name] = fullName.split("/");
-      return {
-        name,
-        count,
-        href: `https://github.com/${fullName}`,
-        // github has no repo logo, only an owner avatar, so own repos use the initial
-        logo:
-          owner.toLowerCase() === login.toLowerCase() ? undefined : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={`https://github.com/${owner}.png?size=64`} alt="" />
-          ),
-      };
-    });
+  const data: RepoSearchResult = await res.json();
+  return {
+    sampled: data.sampled,
+    repos: data.repos.map(({ avatar, ...repo }) => ({
+      ...repo,
+      logo: avatar ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={avatar} alt="" />
+      ) : undefined,
+    })),
+  };
 }
 
 function useGitHubUser(login?: string) {
   const [data, setData] = React.useState<{
     contributions: Contribution[];
     repos: RepoContribution[];
+    sampled: boolean;
   }>();
 
   React.useEffect(() => {
     if (!login) return;
     let active = true;
 
-    Promise.all([fetchCalendar(login), fetchRepos(login)])
-      .then(([contributions, repos]) => {
-        if (active && contributions) setData({ contributions, repos });
+    Promise.all([
+      fetchCalendar(login).catch(() => null),
+      fetchRepos(login).catch(() => ({ repos: [], sampled: false })),
+    ])
+      .then(([contributions, result]) => {
+        if (active) setData({ contributions: contributions ?? [], ...result });
       })
       .catch(() => {});
 
@@ -452,7 +440,7 @@ const RepoRow = ({
         {repo.name}
       </span>
       <span className="text-sm tabular-nums text-foreground/70">
-        {repo.count}
+        {repo.count} <span className="text-xs">commits</span>
       </span>
     </>
   );
@@ -542,7 +530,7 @@ const GitHubActivity = ({
 
   const contributions = contributionsProp.length
     ? contributionsProp
-    : (fetched?.contributions ?? placeholder);
+    : (fetched?.contributions.length ? fetched.contributions : placeholder);
   const repos = reposProp.length ? reposProp : (fetched?.repos ?? []);
 
   const scale = React.useMemo(() => toScale(accent), [accent]);
@@ -619,7 +607,7 @@ const GitHubActivity = ({
             transition={headerTransition}
             className="flex items-center justify-between gap-3 py-3 px-4"
           >
-            <span className="truncate text-sm text-foreground">{label}</span>
+            <span className="truncate text-sm text-foreground">{label}{!reposProp.length && fetched?.sampled ? " (sample)" : ""}</span>
 
             <div className="flex items-center gap-3">
               {!open && (

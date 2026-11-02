@@ -18,6 +18,15 @@ bun dev
 
 Create a `.env.local` file with the environment variables required for your local setup.
 
+GitHub activity is cached in Upstash Redis for one hour. Configure the same Redis credentials used by feedback and subscriptions:
+
+```bash
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
+```
+
+If Redis is unavailable or unconfigured, GitHub data is fetched directly instead.
+
 For the Spotify now-playing card, also add:
 
 ```bash
