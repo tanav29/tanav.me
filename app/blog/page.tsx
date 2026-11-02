@@ -1,8 +1,6 @@
 import getBlogMetadata from "lib/posts";
 import { Metadata } from "next";
 import Link from "next/link";
-import { Subscribe } from "../components/subscribe";
-import Border from "../components/border";
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -23,7 +21,7 @@ export default async function Page() {
 
   return (
     <section className="flex flex-col gap-8">
-      <h1 className="text-lg font-medium tracking-tight text-[var(--text)]">
+      <h1 className="page-title">
         Writing
       </h1>
       <div className="flex flex-col gap-8">
@@ -36,14 +34,12 @@ export default async function Page() {
             <span className="text-xs text-[var(--text-muted)] tabular-nums w-28">
               {formatDate(post.date)}
             </span>
-            <h3 className="font-medium text-[var(--text)] group-hover:opacity-70 transition-opacity w-full">
+            <h3 className="text-sm font-medium text-[var(--text)] group-hover:opacity-70 transition-opacity w-full">
               {post.title}
             </h3>
           </Link>
         ))}
       </div>
-      {/*<Border />
-      <Subscribe />*/}
     </section>
   );
 }

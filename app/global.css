@@ -212,13 +212,20 @@ html {
     }
 }
 
+.page-title {
+  @apply text-xl font-medium tracking-tight text-neutral-900;
+}
+
 .typeset-docs {
-  --typeset-font-body: var(--font-geist);
-  --typeset-font-heading: var(--font-geist);
-  --typeset-font-mono: var(--font-geist-mono);
-  --typeset-size: 15px;
-  --typeset-leading: 1.75;
-  --typeset-flow: 1.25em;
+  --typeset-font-heading: inherit;
+  --typeset-size: 0.875rem;
+  --typeset-leading: 1.714;
+  font-size: var(--typeset-size);
+}
+
+.typeset-docs :is(h1, h2, h3, h4, h5, h6) {
+  font-size: 1em;
+  font-weight: 500;
 }
 
 .contribution-grid {

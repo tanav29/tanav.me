@@ -21,7 +21,7 @@ export default function Page() {
           <div className="flex items-center gap-3">
             <Image src="/pfp.png" alt="" width={44} height={44} priority className="size-11 rounded-full object-cover" />
             <div>
-              <h1 className="text-xl font-medium tracking-tight text-neutral-900">Tanav Poswal</h1>
+              <h1 className="page-title">Tanav Poswal</h1>
               <p className="mt-0.5 text-xs text-neutral-500">software engineer based in india</p>
             </div>
           </div>

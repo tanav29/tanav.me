@@ -587,7 +587,7 @@ const GitHubActivity = ({
       style={{ width, ...style }}
       {...props}
     >
-      <p className="mb-4 text-base font-medium text-foreground px-1.5 text-xs">
+      <p className="mb-4 font-medium text-foreground px-1.5 text-xs">
         {heading}
       </p>
 

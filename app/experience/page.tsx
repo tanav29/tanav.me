@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ExperiencePage() {
   return (
     <section className="flex flex-col gap-8 px-4 sm:px-6">
-      <h1 className="text-lg font-medium tracking-tight text-[var(--text)]">
+      <h1 className="page-title">
         Experience
       </h1>
       <div className="flex flex-col gap-8">
@@ -28,7 +28,7 @@ export default function ExperiencePage() {
                 <div>
                   <a
                     href={job.url}
-                    className="font-bold text-[var(--text)] hover:underline text-sm"
+                    className="font-medium text-[var(--text)] hover:underline text-sm"
                   >
                     {job.company}
                   </a>
@@ -44,7 +44,7 @@ export default function ExperiencePage() {
                 </div>
               </div>
 
-              <p className="text-xs text-[var(--text-muted)]">
+              <p className="text-xs leading-5 text-[var(--text-muted)]">
                 {job.description}
               </p>
             </div>

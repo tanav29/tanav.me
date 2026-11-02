@@ -1,16 +1,8 @@
 import fs from "fs";
 import matter from "gray-matter";
 import getBlogMetadata from "lib/posts";
-import { Instrument_Serif } from "next/font/google";
-import { cn } from "cnfast";
 import "katex/dist/katex.min.css";
 import MarkdownRenderer from "./MarkdownRenderer";
-
-const headline = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  style: "italic",
-});
 
 function getReadingTime(content: string): string {
   const wordsPerMinute = 200;
@@ -89,17 +81,14 @@ export default async function Page(props) {
 
   return (
     <section className="flex flex-col">
-      <header className="flex flex-col gap-1 mb-7 mt-32 ">
-        <div className="flex items-center gap-3 text-sm text-[var(--text-muted)]">
+      <header className="flex flex-col gap-1 mb-7">
+        <div className="flex items-center gap-3 text-xs text-[var(--text-muted)]">
           <span>{formatDate(post.data.date)}</span>
           <span>•</span>
           <span>{readingTime}</span>
         </div>
         <h1
-          className={cn(
-            "text-4xl font-bold text-[var(--text)]",
-            headline.className,
-          )}
+          className="page-title"
         >
           {post.data.title}
         </h1>

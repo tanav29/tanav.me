@@ -4,7 +4,6 @@ import { projects } from "../../lib/projects";
 import type { Project } from "../../lib/projects";
 import Image from "next/image";
 import { Globe, Youtube } from "lucide-react";
-import { Geist_Mono } from "next/font/google";
 import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
 import {
   Dialog,
@@ -13,10 +12,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Tooltip } from "@/components/ui/tooltip-card";
-
-const mono = Geist_Mono({
-  subsets: ["latin"],
-});
 
 export function ProjectCard({
   img,
@@ -37,7 +32,7 @@ export function ProjectCard({
         })}
       <div className="flex flex-col flex-1">
         <Tooltip
-          containerClassName="text-sm cursor-pointer font-semibold text-[var(--text)] capitalize -mt-1 w-fit"
+          containerClassName="text-sm cursor-pointer font-medium text-[var(--text)] capitalize -mt-1 w-fit"
           content={
             <Image
               width={200}
@@ -51,10 +46,10 @@ export function ProjectCard({
           }>
           {name}
         </Tooltip>
-        <p className="text-sm text-[var(--text-muted)] first-letter:capitalize w-full wrap-anywhere mt-1">
+        <p className="text-xs leading-5 text-[var(--text-muted)] first-letter:capitalize w-full wrap-anywhere mt-1">
           {brief}
         </p>
-        <div className={`flex flex-wrap ${mono.className} gap-1 mt-1`}>
+        <div className="flex flex-wrap gap-1 mt-1">
           {tech.map((t) => (
             <span
               key={t}
@@ -153,7 +148,7 @@ export default function ProjectsPage() {
   return (
     <section className="flex flex-col gap-6 px-4 sm:px-6">
       <div className="flex w-full items-center justify-between">
-        <h1 className="text-lg font-medium tracking-tight text-[var(--text)]">
+        <h1 className="page-title">
           Completed Projects
         </h1>
       </div>
