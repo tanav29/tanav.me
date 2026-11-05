@@ -8,6 +8,10 @@ import GitHubActivity from "@/components/ui/github-activity";
 import MergedPullRequests from "./components/merged-pull-requests";
 import ViewerNumber from "./components/viewer";
 
+// GitHub stats are fetched by server components; render this page per request
+// so a static build cannot freeze the merged PR count at build time.
+export const dynamic = "force-dynamic";
+
 const section = "border-t border-neutral-100 py-7";
 const heading = "text-sm font-medium text-neutral-900";
 const more = "text-xs text-neutral-500 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-4";
