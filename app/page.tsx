@@ -7,6 +7,8 @@ import { projects } from "@/lib/projects";
 import GitHubActivity from "@/components/ui/github-activity";
 import MergedPullRequests from "./components/merged-pull-requests";
 import ViewerNumber from "./components/viewer";
+import styles from "./page.module.css";
+import GithubCalendar from "./components/github-calendar";
 
 // GitHub stats are fetched by server components; render this page per request
 // so a static build cannot freeze the merged PR count at build time.
@@ -19,14 +21,27 @@ const link = "text-neutral-600 underline decoration-neutral-300 underline-offset
 
 export default function Page() {
   return (
-    <div className="px-5 sm:px-7">
+    <div className="">
       <section className="pb-8 pt-3">
         <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <Image src="/pfp.png" alt="" width={44} height={44} priority className="size-11 rounded-full object-cover" />
-            <div>
+          <div className="flex min-w-0 items-center gap-3">
+            <div className={styles.macintosh}>
+              <div className={styles.case}>
+                <div className={styles.screen}>
+                  <Image
+                    src="/pfp.png"
+                    alt="Tanav Poswal on a Macintosh screen"
+                    fill
+                    sizes="36px"
+                    priority
+                    className={styles.portrait}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="min-w-0">
               <h1 className="page-title">Tanav Poswal</h1>
-              <p className="mt-0.5 text-xs text-neutral-500">software engineer based in india</p>
+              <p className="text-xs text-neutral-500">software engineer based in india</p>
             </div>
           </div>
           <Suspense fallback={null}><ViewerNumber /></Suspense>
@@ -48,7 +63,7 @@ export default function Page() {
         <h2 id="oss-heading" className={heading}>open source</h2>
         <div className="mt-2"><Suspense fallback={<span className="text-xs text-neutral-500">loading merged pull requests…</span>}><MergedPullRequests /></Suspense></div>
         </div>
-        <ul className="mt-2 divide-y divide-neutral-100">
+        <ul className="">
           {oss.map((pr) => (
             <li key={pr.link}>
               <a href={pr.link} className="group flex items-start justify-between gap-3 py-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-4">
@@ -62,9 +77,9 @@ export default function Page() {
 
       <section className={section} aria-labelledby="projects-heading">
         <div className="flex items-center justify-between gap-4"><h2 id="projects-heading" className={heading}>selected projects</h2><Link href="/projects" className={more}>projects</Link></div>
-        <div className="mt-3 divide-y divide-neutral-100">
+        <div className="mt-3">
           {projects.slice(0, 3).map((project) => (
-            <article key={project.name} className="py-3 first:pt-1 last:pb-0">
+            <article key={project.name} className="pb-3 first:pt-1 last:pb-0">
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="text-sm font-medium text-neutral-800">{project.name}</h3>
                 <div className="flex shrink-0 gap-3">

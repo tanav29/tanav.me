@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <section className="flex flex-col gap-8 px-4 sm:px-6">
+    <section className="flex flex-col gap-8">
       <h1 className="page-title">
         Experience
       </h1>

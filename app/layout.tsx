@@ -97,16 +97,11 @@ export default function RootLayout({
             disableTransitionOnChange={false}
           >
             <PostHogProvider>
-              <div className="mx-auto max-w-xl overflow-hidden py-5 min-h-screen scroll-smooth bg-white relative sm:px-[18px]">
-                <header className="px-2 sm:px-5 flex items-center justify-between py-4 pt-0">
-                  <Navbar />
-
-                </header>
-                <Border />
+              <div className="mx-auto max-w-md overflow-hidden py-5 px-2 min-h-screen scroll-smooth bg-white">
+                <Navbar />
                 <main id="main-content" className="my-6 min-h-[77vh]">
                   {children}
                 </main>
-                <Border />
                 <footer className="mt-4 mx-6 flex items-center justify-between text-xs text-muted-foreground">
                   <div>{new Date().getFullYear()} Tanav</div>
                   <div>

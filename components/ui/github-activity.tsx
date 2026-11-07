@@ -26,8 +26,8 @@ export type RepoContribution = {
 };
 
 const DEFAULT_ACCENT = "#39d353";
-const DEFAULT_CELL_SIZE = 11;
-const DEFAULT_LABEL = "Top repos ? last 3 months";
+const DEFAULT_CELL_SIZE = 8;
+const DEFAULT_LABEL = "Top repos in last 3 months";
 const DEFAULT_MONTHS = 12;
 const WEEKS_PER_MONTH = 365.25 / 12 / 7;
 const STACK_LIMIT = 3;
@@ -412,7 +412,7 @@ const Avatar = ({
     layoutId={layoutId}
     transition={transition}
     className={cn(
-      "grid size-7 shrink-0 place-items-center overflow-hidden rounded-full bg-neutral-200 text-[11px] font-medium uppercase text-foreground/70 ring-2 ring-background dark:bg-neutral-800",
+      "grid size-5 shrink-0 place-items-center overflow-hidden rounded-full bg-neutral-200 text-[11px] font-medium uppercase text-foreground/70 dark:bg-neutral-800",
       "[&_img]:size-full [&_img]:object-cover [&_svg]:size-full",
       className,
     )}
@@ -469,12 +469,12 @@ const Chevron = ({
     strokeLinecap="round"
     strokeLinejoin="round"
     aria-hidden
-    className="size-7 text-[#C4C9CC] dark:text-[#3E4346]"
+    className="size-6 text-[#C4C9CC] dark:text-[#3E4346]"
     initial={false}
     animate={{ rotate: open ? 180 : 0 }}
     transition={transition}
   >
-    <circle cx="12" cy="12" r="10" />
+    {/*<circle cx="12" cy="12" r="10" />*/}
     <path d="m16 10-4 4-4-4" />
   </motion.svg>
 );
@@ -569,13 +569,13 @@ const GitHubActivity = ({
       data-slot="github-activity"
       className={cn(
         "relative max-w-full overflow-hidden bg-background p-0",
-        repos.length > 0 && "pb-[76px]",
+        // repos.length > 0 && "pb-[76px]",
         className,
       )}
       style={{ width, ...style }}
       {...props}
     >
-      <p className="mb-4 font-medium text-foreground px-1.5 text-xs">
+      <p className="mb-2 text-foreground text-xs">
         {heading}
       </p>
 
@@ -589,7 +589,7 @@ const GitHubActivity = ({
         reduceMotion={reduceMotion}
       />
 
-      {repos.length > 0 && (
+      {/*{repos.length > 0 && (
         <motion.div
           layout
           id={`${uid}-panel`}
@@ -605,11 +605,11 @@ const GitHubActivity = ({
           <motion.div
             layout="position"
             transition={headerTransition}
-            className="flex items-center justify-between gap-3 py-3 px-4"
+            className="flex items-center justify-between gap-1 py-1 px-2"
           >
             <span className="truncate text-sm text-foreground">{label}{!reposProp.length && fetched?.sampled ? " (sample)" : ""}</span>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
               {!open && (
                 <div className="flex items-center">
                   {repos.slice(0, STACK_LIMIT).map((repo, index) => (
@@ -661,7 +661,7 @@ const GitHubActivity = ({
             )}
           </AnimatePresence>
         </motion.div>
-      )}
+      )}*/}
     </div>
   );
 };

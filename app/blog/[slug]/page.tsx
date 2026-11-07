@@ -81,8 +81,8 @@ export default async function Page(props) {
 
   return (
     <section className="flex flex-col">
-      <header className="flex flex-col gap-1 mb-7">
-        <div className="flex items-center gap-3 text-xs text-[var(--text-muted)]">
+      <header className="flex flex-col gap-1 mb-7 mt-4">
+        <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
           <span>{formatDate(post.data.date)}</span>
           <span>•</span>
           <span>{readingTime}</span>

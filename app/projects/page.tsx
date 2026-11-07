@@ -146,7 +146,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <section className="flex flex-col gap-6 px-4 sm:px-6">
+    <section className="flex flex-col gap-6">
       <div className="flex w-full items-center justify-between">
         <h1 className="page-title">
           Completed Projects

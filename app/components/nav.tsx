@@ -14,7 +14,7 @@ export function Navbar() {
   const pathname = usePathname();
   return (
     <nav aria-label="Main navigation" className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs font-medium">
-      <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6">
+      <div className="flex flex-wrap items-center gap-x-3">
       {navItems.map(({ href, name }) => (
         <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}
           className={`py-2 focus-visible:outline-2 focus-visible:outline-offset-4 ${pathname === href ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}>
@@ -29,4 +29,3 @@ export function Navbar() {
     </nav>
   );
 }
-
