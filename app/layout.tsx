@@ -6,7 +6,6 @@ import { PostHogProvider } from "./components/PostHogProvider";
 import { ThemeProvider } from "./components/theme-provider";
 import { FeedbackButton } from "./components/feedback";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Border from "./components/border";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
@@ -97,12 +96,12 @@ export default function RootLayout({
             disableTransitionOnChange={false}
           >
             <PostHogProvider>
-              <div className="mx-auto max-w-md overflow-hidden py-5 px-2 min-h-screen scroll-smooth bg-white">
+              <div className="site-shell">
                 <Navbar />
-                <main id="main-content" className="my-6 min-h-[77vh]">
+                <main id="main-content" className="site-main">
                   {children}
                 </main>
-                <footer className="mt-4 mx-6 flex items-center justify-between text-xs text-muted-foreground">
+                <footer className="site-footer">
                   <div>{new Date().getFullYear()} Tanav</div>
                   <div>
                     <FeedbackButton />

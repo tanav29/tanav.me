@@ -9,46 +9,46 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <section className="flex flex-col gap-8">
+    <section className="page-stack">
       <h1 className="page-title">
         Experience
       </h1>
-      <div className="flex flex-col gap-8">
+      <div className="content-list">
         {experience.map((job) => (
-          <div className="flex sm:flex-row flex-col gap-3 w-full" key={job.url}>
+          <article className="flex w-full items-start gap-3" key={job.url}>
             <Image
               alt={job.company}
               width={40}
               height={40}
-              className="w-10 h-10 sm:mb-0 mb-2 rounded-md border border-[var(--border)]"
+              className="size-10 shrink-0 rounded-lg border border-border"
               src={job.img}
             />
-            <div className="flex flex-2 flex-col gap-2">
-              <div className="flex justify-between items-baseline">
+            <div className="flex min-w-0 flex-1 flex-col gap-2">
+              <div className="section-header gap-x-3">
                 <div>
                   <a
                     href={job.url}
-                    className="font-medium text-[var(--text)] hover:underline text-sm"
+                    className="section-heading underline-offset-4 hover:underline"
                   >
                     {job.company}
                   </a>
-                  <p className="text-xs text-[var(--text-muted)]">{job.role}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{job.role}</p>
                 </div>
-                <div className="flex flex-col items-end justify-end">
-                  <span className="text-xs text-[var(--text-muted)]">
+                <div className="flex flex-col text-xs text-muted-foreground sm:ml-auto sm:items-end">
+                  <span>
                     {job.period}
                   </span>
-                  <span className="text-xs text-[var(--text-muted)]">
+                  <span className="mt-1">
                     {job.location}
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs leading-5 text-[var(--text-muted)]">
+              <p className="text-xs leading-5 text-muted-foreground">
                 {job.description}
               </p>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

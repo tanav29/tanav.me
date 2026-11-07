@@ -70,9 +70,9 @@ export function FeedbackButton() {
 
   return (
     <Dialog open={open} onOpenChange={(v) => setOpen(v)}>
-      <DialogTrigger render={<Button variant="link">Feedback</Button>} />
+      <DialogTrigger render={<Button variant="link" className="px-0 text-xs text-muted-foreground hover:text-foreground">Feedback</Button>} />
 
-      <DialogContent className="w-full max-w-md">
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Send feedback</DialogTitle>
           <DialogDescription>
@@ -81,7 +81,7 @@ export function FeedbackButton() {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="mt-4 grid gap-4">
+        <div className="grid gap-4">
           <div>
             <p className="mb-2 text-sm font-medium">Rating</p>
             <div
@@ -100,7 +100,7 @@ export function FeedbackButton() {
                     onClick={() => setRating(i)}
                     onMouseEnter={() => setHover(i)}
                     onMouseLeave={() => setHover(0)}
-                    className={`rounded p-1 text-amber-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/60`}
+                    className="icon-action size-10 text-amber-500 hover:bg-muted hover:text-amber-600"
                   >
                     <Star
                       aria-hidden="true"
@@ -127,7 +127,7 @@ export function FeedbackButton() {
               }}
               rows={4}
               placeholder="What could be improved or what you liked..."
-              className="w-full resize-none rounded border bg-transparent px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+              className="w-full resize-none rounded-md border border-input bg-transparent px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
             />
             <div className="mt-1 flex items-center justify-between text-xs text-muted-foreground">
               <div>{rating ? `${rating} / 5` : "No rating"}</div>
@@ -138,7 +138,7 @@ export function FeedbackButton() {
           </div>
         </div>
 
-        <DialogFooter className="mt-4">
+        <DialogFooter>
           <div className="flex w-full items-center justify-between gap-2">
             {statusMessage ? (
               <div className="text-sm text-muted-foreground" aria-live="polite">

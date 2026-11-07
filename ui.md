@@ -1,5 +1,16 @@
 # UI UX Rules for Dead Minimal Portfolio
 
+## Shared implementation
+
+- Keep the existing narrow, single-column portfolio layout.
+- Use `site-shell`, `site-main`, and `site-footer` for aligned page gutters.
+- Use `page-stack` for 24px page spacing and `content-list` for 16px list gaps.
+- Use `portfolio-section` for 24px vertical padding with a theme border divider.
+- Use `section-header`, `section-heading`, and `page-title` for shared heading alignment and typography.
+- Use `section-link`, `inline-link`, and `icon-action` for consistent interaction states.
+- Use theme tokens (`border-border`, `text-muted-foreground`, `bg-muted`) instead of page-specific neutral colors.
+- Use `rounded-md` for controls, `rounded-lg` for previews and grouped controls, and `rounded-xl` for dialogs.
+
 ## 1. Core Philosophy
 
 - Prioritize calm, peaceful visual tone.

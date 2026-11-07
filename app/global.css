@@ -212,8 +212,69 @@ html {
     }
 }
 
-.page-title {
-  @apply text-xl font-medium tracking-tight text-neutral-900;
+/* Shared portfolio rhythm: 16px between entries, 24px between sections.
+   Use theme borders and radii so new pages inherit the same treatment. */
+@layer components {
+  .site-shell {
+    @apply mx-auto flex min-h-dvh w-full max-w-md flex-col bg-background px-4 py-6 sm:px-6;
+  }
+
+  .site-main {
+    @apply min-w-0 flex-1 py-6;
+  }
+
+  .site-footer {
+    @apply flex items-center justify-between gap-4 border-t border-border pt-4 text-xs text-muted-foreground;
+  }
+
+  .page-stack {
+    @apply flex flex-col gap-6;
+  }
+
+  .content-list {
+    @apply flex flex-col gap-4;
+  }
+
+  .portfolio-section {
+    @apply border-t border-border py-6;
+  }
+
+  .section-header {
+    @apply flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2;
+  }
+
+  .page-title {
+    @apply text-xl font-medium tracking-tight text-foreground text-balance;
+  }
+
+  .section-heading {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  .section-link {
+    @apply text-xs text-muted-foreground transition-colors hover:text-foreground;
+  }
+
+  .inline-link {
+    @apply text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground;
+  }
+
+  .icon-action {
+    @apply inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground;
+  }
+
+  @media (pointer: coarse) {
+    .icon-action {
+      @apply size-10;
+    }
+  }
+}
+
+@layer base {
+  :where(a, button, input, textarea, select):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
+  }
 }
 
 .typeset-docs {
@@ -221,6 +282,22 @@ html {
   --typeset-size: 0.875rem;
   --typeset-leading: 1.714;
   font-size: var(--typeset-size);
+}
+
+.typeset-docs > :first-child {
+  margin-block-start: 0;
+}
+
+.typeset-docs .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25rem;
+  scrollbar-width: thin;
+}
+
+.typeset-docs .katex-display > .katex {
+  width: max-content;
+  min-width: 100%;
 }
 
 .typeset-docs :is(h1, h2, h3, h4, h5, h6) {

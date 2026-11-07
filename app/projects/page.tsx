@@ -25,14 +25,15 @@ export function ProjectCard({
   video,
 }: Project) {
   return (
-    <div className="group flex sm:flex-row flex-col items-start gap-4">
+    <article className="group flex items-start gap-3">
       {icon &&
         React.createElement(icon, {
-          className: "w-4 h-4 m-1/2 text-muted-foreground",
+          className: "mt-1 size-4 shrink-0 text-muted-foreground",
+          "aria-hidden": true,
         })}
-      <div className="flex flex-col flex-1">
+      <div className="flex min-w-0 flex-1 flex-col">
         <Tooltip
-          containerClassName="text-sm cursor-pointer font-medium text-[var(--text)] capitalize -mt-1 w-fit"
+          containerClassName="section-heading w-fit capitalize"
           content={
             <Image
               width={200}
@@ -46,96 +47,99 @@ export function ProjectCard({
           }>
           {name}
         </Tooltip>
-        <p className="text-xs leading-5 text-[var(--text-muted)] first-letter:capitalize w-full wrap-anywhere mt-1">
+        <p className="mt-1 w-full text-xs leading-5 text-muted-foreground first-letter:capitalize wrap-anywhere">
           {brief}
         </p>
-        <div className="flex flex-wrap gap-1 mt-1">
+        <div className="mt-1 flex flex-wrap gap-x-2 gap-y-1">
           {tech.map((t) => (
             <span
               key={t}
-              className="transition text-xs text-(--text-muted) pr-1">
+              className="text-xs text-muted-foreground">
               #{t}
             </span>
           ))}
         </div>
-      </div>
-      <div className="flex items-center gap-2">
-        {video && (
-          <Dialog>
-            <DialogTrigger
-              render={
-                <button className="outline-none cursor-pointer">
-                  <Youtube
-                    aria-hidden="true"
-                    className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors"
-                  />
-                </button>
-              }
-            />
-            <DialogContent className="sm:max-w-xl">
-              <DialogTitle>{name}</DialogTitle>
-              <div
-                style={{
-                  overflow: "hidden",
-                  paddingBottom: "56.25%",
-                  position: "relative",
-                  height: 0,
-                }}>
-                <iframe
+        <div className="mt-2 flex flex-wrap items-center gap-1">
+          {video && (
+            <Dialog>
+              <DialogTrigger
+                render={
+                  <button type="button" className="icon-action" aria-label={`Watch ${name} demo`}>
+                    <Youtube
+                      aria-hidden="true"
+                      className="size-4"
+                    />
+                  </button>
+                }
+              />
+              <DialogContent className="sm:max-w-xl">
+                <DialogTitle>{name}</DialogTitle>
+                <div
                   style={{
-                    left: 0,
-                    top: 0,
-                    height: "100%",
-                    width: "100%",
-                    position: "absolute",
-                  }}
-                  src={`https://www.youtube.com/embed/${video}`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Embedded YouTube Video"
-                />
-              </div>
-            </DialogContent>
-          </Dialog>
-        )}
-        {web && (
-          <a
-            href={web}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${name} website`}>
-            <Globe
-              aria-hidden="true"
-              className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors"
-            />
-          </a>
-        )}
-        {git && (
-          <a
-            href={git}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${name} GitHub repository`}>
-            <IconBrandGithub
-              aria-hidden="true"
-              className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors"
-            />
-          </a>
-        )}
-        {info && (
-          <a
-            href={info}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${name} announcement`}>
-            <IconBrandTwitter
-              aria-hidden="true"
-              className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors"
-            />
-          </a>
-        )}
+                    overflow: "hidden",
+                    paddingBottom: "56.25%",
+                    position: "relative",
+                    height: 0,
+                  }}>
+                  <iframe
+                    style={{
+                      left: 0,
+                      top: 0,
+                      height: "100%",
+                      width: "100%",
+                      position: "absolute",
+                    }}
+                    src={`https://www.youtube.com/embed/${video}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="Embedded YouTube Video"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
+          )}
+          {web && (
+            <a
+              href={web}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon-action"
+              aria-label={`Open ${name} website`}>
+              <Globe
+                aria-hidden="true"
+                className="size-4"
+              />
+            </a>
+          )}
+          {git && (
+            <a
+              href={git}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon-action"
+              aria-label={`Open ${name} GitHub repository`}>
+              <IconBrandGithub
+                aria-hidden="true"
+                className="size-4"
+              />
+            </a>
+          )}
+          {info && (
+            <a
+              href={info}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon-action"
+              aria-label={`Open ${name} announcement`}>
+              <IconBrandTwitter
+                aria-hidden="true"
+                className="size-4"
+              />
+            </a>
+          )}
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -146,13 +150,9 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <section className="flex flex-col gap-6">
-      <div className="flex w-full items-center justify-between">
-        <h1 className="page-title">
-          Completed Projects
-        </h1>
-      </div>
-      <div className="flex flex-col space-y-4">
+    <section className="page-stack">
+      <h1 className="page-title">Completed Projects</h1>
+      <div className="content-list">
         {projects.map((project) => (
           <ProjectCard key={project.name} {...project} />
         ))}

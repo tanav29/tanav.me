@@ -20,23 +20,23 @@ export default async function Page() {
   const posts = getBlogMetadata("blogs");
 
   return (
-    <section className="flex flex-col gap-8">
+    <section className="page-stack">
       <h1 className="page-title">
         Writing
       </h1>
-      <div className="flex flex-col gap-8">
+      <div className="content-list">
         {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group flex items-baseline justify-center"
+            className="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4"
           >
-            <span className="text-xs text-[var(--text-muted)] tabular-nums w-28">
+            <span className="shrink-0 text-xs text-muted-foreground tabular-nums sm:w-24">
               {formatDate(post.date)}
             </span>
-            <h3 className="text-sm font-medium text-[var(--text)] group-hover:opacity-70 transition-opacity w-full">
+            <h2 className="section-heading min-w-0 group-hover:underline underline-offset-4">
               {post.title}
-            </h3>
+            </h2>
           </Link>
         ))}
       </div>

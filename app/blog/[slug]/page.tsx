@@ -80,9 +80,9 @@ export default async function Page(props) {
   const readingTime = getReadingTime(post.content);
 
   return (
-    <section className="flex flex-col">
-      <header className="flex flex-col gap-1 mb-7 mt-4">
-        <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
+    <section className="page-stack">
+      <header className="flex flex-col gap-2">
+        <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
           <span>{formatDate(post.data.date)}</span>
           <span>•</span>
           <span>{readingTime}</span>
