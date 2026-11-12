@@ -7,6 +7,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import { FeedbackButton } from "./components/feedback";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { SideStickers } from "./components/side-stickers";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -96,6 +97,7 @@ export default function RootLayout({
             disableTransitionOnChange={false}
           >
             <PostHogProvider>
+              <SideStickers />
               <div className="site-shell">
                 <Navbar />
                 <main id="main-content" className="site-main">

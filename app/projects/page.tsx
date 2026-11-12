@@ -61,11 +61,14 @@ export function ProjectCard({
           ))}
         </div>
         {caseStudy && (
-          <dl className="mt-3 space-y-3 text-sm leading-6">
-            <div><dt className="font-medium">The problem</dt><dd className="text-muted-foreground">{caseStudy.problem}</dd></div>
-            <div><dt className="font-medium">What I built</dt><dd className="text-muted-foreground">{caseStudy.implementation}</dd></div>
-            <div><dt className="font-medium">The result</dt><dd className="text-muted-foreground">{caseStudy.outcome}</dd></div>
-          </dl>
+          <details className="mt-2 text-sm leading-6">
+            <summary className="w-fit cursor-pointer text-muted-foreground hover:text-foreground">Build details</summary>
+            <dl className="mt-2 space-y-2">
+              <div><dt className="font-medium">Problem</dt><dd className="text-muted-foreground">{caseStudy.problem}</dd></div>
+              <div><dt className="font-medium">Built</dt><dd className="text-muted-foreground">{caseStudy.implementation}</dd></div>
+              <div><dt className="font-medium">Result</dt><dd className="text-muted-foreground">{caseStudy.outcome}</dd></div>
+            </dl>
+          </details>
         )}
         <div className="mt-2 flex flex-wrap items-center gap-1">
           {video && (

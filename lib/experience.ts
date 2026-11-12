@@ -16,7 +16,7 @@ export const experience: Experience[] = [
     role: "Open Source Contributor",
     period: "Sep 2026",
     location: "Remote",
-    description: "Contributed to OSS projects from Layer5 and Meshery.",
+    description: "Open-source contributions to Layer5 and Meshery.",
   },
   {
     company: "Hacktoberfest",
@@ -25,14 +25,14 @@ export const experience: Experience[] = [
     role: "Open Source Contributor",
     period: "Oct 2025 - Nov 2025",
     location: "Remote",
-    description: "Contributed to OSS projects including the Dodo Payments billing SDK.",
+    description: "Contributed to Dodo Payments' billing SDK and other projects.",
   },
   {
     company: "Cofounds",
     role: "Full Stack Intern",
     period: "Sept 2025 - Oct 2025",
     location: "Remote",
-    description: "Optimized Prisma/tRPC database calls, reducing query latency by 40% for a critical user-facing feature. Built 5+ type-safe API endpoints to support a legacy component refactor using Next.js, tRPC, and PostgreSQL.",
+    description: "Cut query latency by 40% and built 5+ type-safe API endpoints.",
   },
   {
     company: "BlockSeBlock",
@@ -41,7 +41,7 @@ export const experience: Experience[] = [
     role: "Blockchain Engineer",
     period: "July 2025 - Sept 2025",
     location: "Remote",
-    description: "Built decentralized applications on the Internet Computer (ICP) blockchain using Rust.",
+    description: "Built Rust dApps on Internet Computer.",
   },
 ];
 

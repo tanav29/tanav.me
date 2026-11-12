@@ -216,6 +216,8 @@ html {
    Use theme borders and radii so new pages inherit the same treatment. */
 @layer components {
   .site-shell {
+    position: relative;
+    z-index: 1;
     @apply mx-auto flex min-h-dvh w-full max-w-md flex-col bg-background px-4 py-6 sm:px-6;
   }
 
@@ -268,6 +270,46 @@ html {
       @apply size-10;
     }
   }
+}
+
+/* Keep the sticker collage entirely in the generous desktop gutters. */
+.side-stickers {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .side-stickers {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 28rem minmax(0, 1fr);
+  }
+}
+
+.sticker-rail {
+  position: relative;
+}
+
+.sticker-rail-left {
+  grid-column: 1;
+}
+
+.sticker-rail-right {
+  grid-column: 3;
+}
+
+.side-sticker {
+  position: absolute;
+  left: calc(50% + var(--sticker-offset));
+  width: clamp(72px, 8vw, 112px);
+  height: clamp(72px, 8vw, 112px);
+  object-fit: contain;
+  transform: translate(-50%, -50%) rotate(var(--sticker-tilt));
+  filter: drop-shadow(0 3px 2px rgb(0 0 0 / 0.09));
 }
 
 @layer base {

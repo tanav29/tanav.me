@@ -58,15 +58,13 @@ export default function Page() {
           {projects.filter((project) => project.featured).map((project) => (
             <article key={project.name}>
               <div className="section-header gap-x-3">
-                <h3 className="section-heading">{project.name}</h3>
+                <h3 className="section-heading"><Link href={`/projects#${project.name.toLowerCase().replace(/\s+/g, "-")}`} className="hover:underline underline-offset-4">{project.name}</Link></h3>
                 <div className="flex shrink-0 gap-3">
                   {project.git && <a className="section-link" href={project.git}>code<span className="sr-only"> for {project.name}</span> </a>}
                   {project.web && <a className="section-link" href={project.web}>live<span className="sr-only"> site for {project.name}</span> </a>}
                 </div>
               </div>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{project.brief}</p>
-              <p className="mt-2 text-xs leading-5 text-muted-foreground">{project.tech.join(", ")}</p>
-              <Link href={`/projects#${project.name.toLowerCase().replace(/\s+/g, "-")}`} className="inline-link mt-2 inline-block text-sm">how I built it<span className="sr-only">: {project.name}</span></Link>
             </article>
           ))}
         </div>
@@ -126,7 +124,6 @@ export default function Page() {
       </section>
       <section className="portfolio-section" aria-labelledby="writing-heading">
         <div className="section-header"><h2 id="writing-heading" className="section-heading">writing</h2><Link href="/blog" className="section-link">all articles</Link></div>
-        <p className="mt-3 text-sm leading-6 text-muted-foreground">I use writing to work through the systems I'm learning and building.</p>
         <ul className="content-list mt-3 text-sm">
           <li><Link className="inline-link" href="/blog/asynchronous">Building a real-time notification engine</Link></li>
           <li><Link className="inline-link" href="/blog/modern-transformer">From the original transformer to modern LLMs</Link></li>
