@@ -52,6 +52,26 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="portfolio-section" aria-labelledby="projects-heading">
+        <div className="section-header"><h2 id="projects-heading" className="section-heading">selected projects</h2><Link href="/projects" className="section-link">projects</Link></div>
+        <div className="content-list mt-4">
+          {projects.filter((project) => project.featured).map((project) => (
+            <article key={project.name}>
+              <div className="section-header gap-x-3">
+                <h3 className="section-heading">{project.name}</h3>
+                <div className="flex shrink-0 gap-3">
+                  {project.git && <a className="section-link" href={project.git}>code<span className="sr-only"> for {project.name}</span> </a>}
+                  {project.web && <a className="section-link" href={project.web}>live<span className="sr-only"> site for {project.name}</span> </a>}
+                </div>
+              </div>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">{project.brief}</p>
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">{project.tech.join(", ")}</p>
+              <Link href={`/projects#${project.name.toLowerCase().replace(/\s+/g, "-")}`} className="inline-link mt-2 inline-block text-sm">how I built it<span className="sr-only">: {project.name}</span></Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="portfolio-section" aria-labelledby="about-heading">
         <h2 id="about-heading" className="section-heading">about me</h2>
         <div className="mt-3 space-y-3 text-sm leading-6 text-muted-foreground">
@@ -76,26 +96,6 @@ export default function Page() {
             </li>
           ))}
         </ul>
-      </section>
-
-      <section className="portfolio-section" aria-labelledby="projects-heading">
-        <div className="section-header"><h2 id="projects-heading" className="section-heading">selected projects</h2><Link href="/projects" className="section-link">projects</Link></div>
-        <div className="content-list mt-4">
-          {projects.filter((project) => project.featured).map((project) => (
-            <article key={project.name}>
-              <div className="section-header gap-x-3">
-                <h3 className="section-heading">{project.name}</h3>
-                <div className="flex shrink-0 gap-3">
-                  {project.git && <a className="section-link" href={project.git}>code<span className="sr-only"> for {project.name}</span> </a>}
-                  {project.web && <a className="section-link" href={project.web}>live<span className="sr-only"> site for {project.name}</span> </a>}
-                </div>
-              </div>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{project.brief}</p>
-              <p className="mt-2 text-xs leading-5 text-muted-foreground">{project.tech.join(", ")}</p>
-              <Link href={`/projects#${project.name.toLowerCase().replace(/\s+/g, "-")}`} className="inline-link mt-2 inline-block text-sm">how I built it<span className="sr-only">: {project.name}</span></Link>
-            </article>
-          ))}
-        </div>
       </section>
 
       <section className="portfolio-section" aria-labelledby="experience-heading">
