@@ -3,6 +3,7 @@ import matter from "gray-matter";
 import { experience } from "./experience";
 import { oss } from "./oss";
 import { projects } from "./projects";
+import { profile, skillGroups } from "./profile";
 import getBlogMetadata from "./posts";
 
 const SITE_URL = "https://tanav.me";
@@ -10,7 +11,21 @@ const textUrl = (path: string) => `${SITE_URL}/text${path === "/" ? "/home" : pa
 
 const home = `# Tanav Poswal
 
-Software engineer based in India. I build web applications, backend systems, and open-source software.
+${profile.introduction}
+
+${profile.availability}
+
+## About me
+
+${profile.approach}
+
+${profile.education}
+
+${profile.personal}
+
+## What I work with
+
+${skillGroups.map((group) => `### ${group.name}\n\n${group.description}`).join("\n\n")}
 
 - [GitHub](https://github.com/tanav29)
 - [LinkedIn](https://linkedin.com/in/tanav29)
@@ -31,11 +46,14 @@ const projectContent = () => `# Projects by Tanav Poswal\n\n${projects.map((proj
     project.video && `[Video](https://www.youtube.com/watch?v=${project.video})`,
     project.img && `[Image](${SITE_URL}${project.img})`,
   ].filter(Boolean).join(" · ");
-  return `## ${project.name}\n\n${project.brief}\n\nTechnologies: ${project.tech.join(", ")}.\n\n${links}`;
+  const caseStudy = project.caseStudy
+    ? `\n\nThe problem: ${project.caseStudy.problem}\n\nWhat I built: ${project.caseStudy.implementation}\n\nThe result: ${project.caseStudy.outcome}`
+    : "";
+  return `## ${project.name}\n\n${project.brief}${caseStudy}\n\nTechnologies: ${project.tech.join(", ")}.\n\n${links}`;
 }).join("\n\n")}\n`;
 
 const experienceContent = () => `# Experience\n\n${experience.map((job) =>
-  `## [${job.company}](${job.url})\n\n${job.role} — ${job.period}, ${job.location}\n\n${job.description}\n\n[Image](${SITE_URL}${job.img})`
+  `## ${job.url ? `[${job.company}](${job.url})` : job.company}\n\n${job.role} — ${job.period}, ${job.location}\n\n${job.description}${job.img ? `\n\n[Image](${SITE_URL}${job.img})` : ""}`
 ).join("\n\n")}\n`;
 
 function blogPost(slug: string) {

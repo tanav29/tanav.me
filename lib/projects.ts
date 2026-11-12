@@ -9,7 +9,7 @@
   IconChartLine,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
-import { NotebookTextIcon } from "lucide-react";
+import { NotebookTextIcon, TerminalIcon } from "lucide-react";
 
 export interface Project {
   img: string;
@@ -21,9 +21,29 @@ export interface Project {
   web?: string;
   info?: string;
   tech: string[];
+  featured?: boolean;
+  caseStudy?: {
+    problem: string;
+    implementation: string;
+    outcome: string;
+  };
 }
 
 export const projects: Project[] = [
+  {
+    img: "/images/opendevin.svg",
+    icon: TerminalIcon,
+    git: "https://github.com/tanav29/opendevin",
+    name: "OpenDevin",
+    brief: "A coding workspace where an AI agent works in an isolated sandbox and you can review its terminal activity and file changes.",
+    tech: ["Next.js", "Express", "AI SDK", "E2B", "PostgreSQL", "WebSocket"],
+    featured: true,
+    caseStudy: {
+      problem: "An agent needs a place to run code while keeping its actions visible to the person using it.",
+      implementation: "I built repository-aware agent tools in E2B sandboxes, a shared WebSocket terminal, and PostgreSQL-backed sessions. The interface exposes file diffs and per-file revert before pushing changes to GitHub.",
+      outcome: "A local experimental workspace for opening a repository, working with an agent, and reviewing changes before publishing them.",
+    },
+  },
   {
     img: "/images/drawble.png",
     icon: IconPencil,
@@ -33,7 +53,7 @@ export const projects: Project[] = [
     web: "https://drawble-web.vercel.app/",
     brief:
       "Skribbl.io with synchronized YouTube Music to make game rooms more interactive.",
-    tech: ["ScoketIO", "Vite", "Zustand", "Tanstack", "Hono"],
+    tech: ["Socket.IO", "Vite", "Zustand", "TanStack", "Hono"],
   },
   {
     img: "/images/logbip.png",
@@ -53,8 +73,14 @@ export const projects: Project[] = [
     name: "Vidora",
     web: "https://vidora.tanav.me",
     brief:
-      "A video transcoding and streaming platform with a web interface.",
-    tech: ["NextJs", "FFMPEG", "Docker", "Redis", "R2"],
+      "A video processing platform with direct uploads, queued FFmpeg transcoding, and adaptive HLS playback.",
+    tech: ["Next.js", "FFmpeg", "Docker", "Redis", "PostgreSQL", "Cloudflare R2"],
+    featured: true,
+    caseStudy: {
+      problem: "Large uploads and video encoding need to finish without holding an API request open.",
+      implementation: "I separated browser-to-R2 uploads from transcoding with a Redis queue and Docker workers. Workers create HLS renditions and thumbnails, report progress, and retry failed jobs.",
+      outcome: "Uploads and encoding run independently, with processing status and retry history visible in the app. The public demo offers a UI walkthrough without requiring backend services.",
+    },
   },
   {
     img: "/images/ship.png",
@@ -107,9 +133,15 @@ export const projects: Project[] = [
     icon: IconChartLine,
     git: "https://github.com/tanav29/trade",
     info: "https://x.com/tanavtwt/status/2008236317537431580",
-    name: "exchange",
-    brief: "real-time trading app with live order book.",
-    tech: ["Express", "NextJs", "Redis", "ChartJs", "WebSocket"],
+    name: "Trading simulator",
+    brief: "A stock market simulator with order matching, live market depth, and portfolio and trade history.",
+    tech: ["Next.js", "Hono", "Redis", "PostgreSQL", "SSE", "Turborepo"],
+    featured: true,
+    caseStudy: {
+      problem: "A trading simulator needs to match buy and sell orders and keep the dashboard in sync with market changes.",
+      implementation: "I built limit and market order matching with Redis-backed order books, PostgreSQL persistence, and server-sent events for live depth and candlestick updates. The Next.js frontend and Hono API share types in a Bun monorepo.",
+      outcome: "Users can place simulated trades, follow a live order book, and review their holdings and trade history.",
+    },
   },
   {
     img: "/images/linkmash.png",

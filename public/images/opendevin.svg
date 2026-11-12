@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#fafafa"/>
+  <rect x="80" y="72" width="480" height="216" rx="12" fill="white" stroke="#e5e5e5"/>
+  <path d="m112 112 16 12-16 12m32 0h24" fill="none" stroke="#737373" stroke-width="3"/>
+  <text x="112" y="194" font-family="system-ui,sans-serif" font-size="32" fill="#111">OpenDevin</text>
+  <text x="112" y="232" font-family="system-ui,sans-serif" font-size="18" fill="#737373">An experimental coding workspace</text>
+</svg>

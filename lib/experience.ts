@@ -1,7 +1,7 @@
 ﻿export interface Experience {
   company: string;
-  img: string;
-  url: string;
+  img?: string;
+  url?: string;
   role: string;
   period: string;
   location: string;
@@ -28,13 +28,11 @@ export const experience: Experience[] = [
     description: "Contributed to OSS projects including the Dodo Payments billing SDK.",
   },
   {
-    company: "Hirewiser",
-    img: "/company/hw.jpg",
-    url: "https://www.hirewiser.in/",
-    role: "Full Stack Engineer",
+    company: "Cofounds",
+    role: "Full Stack Intern",
     period: "Sept 2025 - Oct 2025",
     location: "Remote",
-    description: "Building scalable backend using Next.js and TRPC.",
+    description: "Optimized Prisma/tRPC database calls, reducing query latency by 40% for a critical user-facing feature. Built 5+ type-safe API endpoints to support a legacy component refactor using Next.js, tRPC, and PostgreSQL.",
   },
   {
     company: "BlockSeBlock",
@@ -43,7 +41,7 @@ export const experience: Experience[] = [
     role: "Blockchain Engineer",
     period: "July 2025 - Sept 2025",
     location: "Remote",
-    description: "Building dapps on ICP blockchain with Rust.",
+    description: "Built decentralized applications on the Internet Computer (ICP) blockchain using Rust.",
   },
 ];
 

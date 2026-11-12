@@ -14,11 +14,11 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://tanav.me"),
   title: {
-    default: "Tanav",
+    default: "Tanav Poswal | Backend & Full-stack Engineer",
     template: "%s",
   },
   description:
-    "Tanav Poswal is a Fullstack developer from India with proficiency in Web and AI.",
+    "Tanav Poswal is a backend-focused software engineer in India building web applications, asynchronous pipelines, and AI tools. Open to internships; graduating April 2027.",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -61,7 +61,7 @@ const personJsonLd = {
   "@type": "Person",
   name: "Tanav Poswal",
   url: "https://tanav.me",
-  description: "Full-stack software engineer building AI-powered applications, scalable backend systems, and distributed software.",
+  description: "Backend-focused software engineer building web applications, asynchronous processing pipelines, and AI tools. Seeking internships; expected graduation April 2027.",
   jobTitle: "Full Stack Engineer",
   sameAs: [
     "https://github.com/tanav29",

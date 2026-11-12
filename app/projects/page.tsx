@@ -23,9 +23,10 @@ export function ProjectCard({
   git,
   info,
   video,
+  caseStudy,
 }: Project) {
   return (
-    <article className="group flex items-start gap-3">
+    <article id={name.toLowerCase().replace(/\s+/g, "-")} className="group flex scroll-mt-6 items-start gap-3">
       {icon &&
         React.createElement(icon, {
           className: "mt-1 size-4 shrink-0 text-muted-foreground",
@@ -47,7 +48,7 @@ export function ProjectCard({
           }>
           {name}
         </Tooltip>
-        <p className="mt-1 w-full text-xs leading-5 text-muted-foreground first-letter:capitalize wrap-anywhere">
+        <p className="mt-1 w-full text-sm leading-6 text-muted-foreground first-letter:capitalize wrap-anywhere">
           {brief}
         </p>
         <div className="mt-1 flex flex-wrap gap-x-2 gap-y-1">
@@ -59,6 +60,13 @@ export function ProjectCard({
             </span>
           ))}
         </div>
+        {caseStudy && (
+          <dl className="mt-3 space-y-3 text-sm leading-6">
+            <div><dt className="font-medium">The problem</dt><dd className="text-muted-foreground">{caseStudy.problem}</dd></div>
+            <div><dt className="font-medium">What I built</dt><dd className="text-muted-foreground">{caseStudy.implementation}</dd></div>
+            <div><dt className="font-medium">The result</dt><dd className="text-muted-foreground">{caseStudy.outcome}</dd></div>
+          </dl>
+        )}
         <div className="mt-2 flex flex-wrap items-center gap-1">
           {video && (
             <Dialog>
@@ -151,9 +159,9 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <section className="page-stack">
-      <h1 className="page-title">Completed Projects</h1>
+      <h1 className="page-title">Projects</h1>
       <div className="content-list">
-        {projects.map((project) => (
+        {[...projects.filter((project) => project.featured), ...projects.filter((project) => !project.featured)].map((project) => (
           <ProjectCard key={project.name} {...project} />
         ))}
       </div>
