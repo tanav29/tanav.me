@@ -304,11 +304,10 @@ html {
 
 .side-sticker {
   position: absolute;
-  left: calc(50% + var(--sticker-offset));
   width: clamp(72px, 8vw, 112px);
   height: clamp(72px, 8vw, 112px);
   object-fit: contain;
-  transform: translate(-50%, -50%) rotate(var(--sticker-tilt));
+  transform: translate(-50%, -50%) rotate(var(--sticker-tilt)) scale(var(--sticker-scale));
   filter: drop-shadow(0 3px 2px rgb(0 0 0 / 0.09));
 }
 

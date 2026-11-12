@@ -10,17 +10,17 @@ const collection = [
   "star", "Peace-hand", "nori-heart", "SparkleTrio",
 ];
 
-const placements = [
-  { side: "left", top: "12%", tilt: -14, offset: -12 },
-  { side: "left", top: "43%", tilt: 10, offset: 18 },
-  { side: "left", top: "75%", tilt: -8, offset: -6 },
-  { side: "right", top: "19%", tilt: 12, offset: 10 },
-  { side: "right", top: "51%", tilt: -12, offset: -16 },
-  { side: "right", top: "80%", tilt: 8, offset: 6 },
-] as const;
+type Sticker = {
+  name: string;
+  side: "left" | "right";
+  top: number;
+  left: number;
+  tilt: number;
+  scale: number;
+};
 
 export function SideStickers() {
-  const [stickers, setStickers] = useState<string[]>([]);
+  const [stickers, setStickers] = useState<Sticker[]>([]);
 
   useEffect(() => {
     // Shuffle only after hydration; keep each visit's selection stable on rerenders.
@@ -29,18 +29,25 @@ export function SideStickers() {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    setStickers(shuffled.slice(0, placements.length));
+    setStickers(shuffled.slice(0, 6).map((name, index) => ({
+      name,
+      side: index < 3 ? "left" : "right",
+      // Separate vertical bands prevent the random scatter from bunching up.
+      top: 12 + (index % 3) * 32 + Math.random() * 8,
+      left: 22 + Math.random() * 56,
+      tilt: Math.random() * 36 - 18,
+      scale: 0.82 + Math.random() * 0.18,
+    })));
   }, []);
 
   return (
     <div className="side-stickers" aria-hidden="true">
       {(["left", "right"] as const).map((side) => (
         <div key={side} className={`sticker-rail sticker-rail-${side}`}>
-          {placements.map((placement, index) => (
-            placement.side === side && stickers[index] ? (
+          {stickers.filter((sticker) => sticker.side === side).map((sticker) => (
               <Image
-                key={index}
-                src={`/stickers/${stickers[index]}.svg`}
+                key={sticker.name}
+                src={`/stickers/${sticker.name}.svg`}
                 alt=""
                 width={120}
                 height={120}
@@ -48,12 +55,12 @@ export function SideStickers() {
                 draggable={false}
                 className="side-sticker"
                 style={{
-                  top: placement.top,
-                  "--sticker-tilt": `${placement.tilt}deg`,
-                  "--sticker-offset": `${placement.offset}px`,
+                  top: `clamp(80px, ${sticker.top}%, calc(100% - 80px))`,
+                  left: `clamp(80px, ${sticker.left}%, calc(100% - 80px))`,
+                  "--sticker-tilt": `${sticker.tilt}deg`,
+                  "--sticker-scale": sticker.scale,
                 } as CSSProperties}
               />
-            ) : null
           ))}
         </div>
       ))}

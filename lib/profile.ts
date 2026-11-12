@@ -4,7 +4,7 @@ export const profile = {
   approach:
     "Into APIs, distributed systems, and writing about what I learn.",
   availability:
-    "Open to backend, full-stack, and AI internships. Available now; open to relocation.",
+    "",
   education:
     "B.Tech in AI & ML, Chandigarh Group of Colleges. Graduating April 2027.",
   personal:
